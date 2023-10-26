@@ -3,12 +3,16 @@ import InputField from "../Componets/FromInput";
 import Button from "./Button";
 import {useState} from "react";
 import ErrorMsg from "./Error";
+import { useUserData } from "../App";
+import { useNavigate } from "react-router-dom";
 
 export default function SignInForm(){
     const [username, setUserName] = useState("");
     const [password, setPassword] = useState("");
-
+    const Nav = useNavigate()
     const [error, setError] = useState("");
+
+    const userContext = useUserData();
 
     const onSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -23,15 +27,14 @@ export default function SignInForm(){
         })
         .then(res => res.json())
         .then(response => {
-            console.log(response);
-            
             if(response.statusCode == 403){
                 setError(response.message);
                 return;
             }
-        
-            localStorage.setItem("user", response.UUID);
-            window.location.href = "/home";
+
+            console.log(response.data, " Test");
+            Nav("/home");
+            userContext.SetUUID(response.UUID);
         })
         .catch(error => {
            console.log(error);

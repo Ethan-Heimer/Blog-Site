@@ -1,11 +1,13 @@
 type TContentProperties = {
     header: JSX.Element,
-    content: JSX.Element
+    content: JSX.Element,
+
+    className?: String;
 };
 
 export default function Content(props: TContentProperties){
     return(
-        <div className="w-50">
+        <div className={"w-50 " + props.className}>
             <div className="block">
                 {props.header}
             </div>
