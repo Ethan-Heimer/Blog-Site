@@ -15,7 +15,7 @@ type TEditorData = {
 }
 
 export type TEditorContent = {
-    dataType: TEditorType,
+    dataType: String,
     content: String
 }
 
@@ -35,7 +35,9 @@ function EditorDataProvider(props: TEditorDataProviderProps){
         let newContent: TEditorContent[] = [...content];
         newContent.push(data);
 
-        SetContent(newContent); 
+        SetContent(newContent);
+        
+        console.log(newContent);
     }
 
     const RemoveContent = (data: TEditorContent) => {

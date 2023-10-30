@@ -12,8 +12,8 @@
   --invisable: #0000000;
 
   --font-xlarge: 2.5vmax;
-  --font-large: 1.8vmax;
-  --font-med: 1.5vmax;
+  --font-large: 2vmax;
+  --font-med: 1.2vmax;
 
   --transition-speed: .1s
 }
@@ -33,6 +33,10 @@ a{
   text-decoration: none;
 }
 
+textarea{
+  resize: vertical;
+}
+
 *{
   margin: 0;
   padding: 0;
@@ -40,7 +44,10 @@ a{
   color: white;
 
   font-family: 'Roboto Mono', monospace;
+  border: none
 }
+
+
 
 .bgc-one{
   background-color: var(--color-one);

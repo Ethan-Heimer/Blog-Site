@@ -11,11 +11,12 @@ type TOptionsProps = {
 
 export default function EditorOptionButton(props: TOptionsProps){
     const AddData = () => {
-        const data: TEditorContent = props.Factory(); 
+        const data: TEditorContent = props.Factory();
+        props.AddFunc(data); 
     }
     
     return(
-       <button onClick={() => props.Factory()}>
+       <button onClick={AddData}>
             <div className = "bgc-three center pad-1 bind-parent hover-scale">
                 <i className={`fa-solid ${props.IconName} font-xlarge parent-hover-tilt`}></i>
                 <p>{props.OptionName}</p>
