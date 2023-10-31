@@ -1,5 +1,5 @@
+import { TBlogContent } from "./BlogDataProvider";
 import { TEditorType } from "./ContentFactory";
-import {TBlogContent } from "./BlogEditor";
 
 type TOptionsProps = {
     IconName: string;

@@ -1,4 +1,4 @@
-import { TBlogContent } from "./BlogEditor";
+import { TBlogContent } from "./BlogDataProvider";
 import HeaderInputField from "./input/HeaderInput";
 import TextBox from "./input/TextBoxInput";
 
