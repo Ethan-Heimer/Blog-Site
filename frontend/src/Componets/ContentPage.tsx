@@ -6,8 +6,6 @@ type TContentProperties = {
 };
 
 export default function Content(props: TContentProperties){
-    console.log(props.content, "contents");
-    
     return(
         <div className={"w-50 " + props.className}>
             <div className="block">

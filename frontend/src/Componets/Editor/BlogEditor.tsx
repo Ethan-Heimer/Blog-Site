@@ -1,54 +1,64 @@
 import {createContext, useState, useContext} from "react";
 import BlogEditorDisplay from "./BlogEditorDisplay";
 import BlogEditorOptions from "./BlogEditorOptions";
-import { TEditorType } from "./ContentFactory";
+import SubmitBlog from "./input/SubmitBlog";
 
 type TEditorDataProviderProps = {
     children: any
 }
 
-type TEditorData = {
- Content: Array<TEditorContent>;
+export type TBlogData = {
+ Header: string;
+ Content: Array<TBlogContent>;
 
  AddContentData: Function;
  RemoveContentData: Function;
+
+ EditHeader: Function;
 }
 
-export type TEditorContent = {
-    dataType: String,
-    content: String
+export type TBlogContent = {
+    dataType: string,
+    content: string
 }
 
-const EditorData: TEditorData = {
+const EditorData: TBlogData = {
+  Header: "",  
   Content: [],
 
   AddContentData: () => {},
-  RemoveContentData: () => {}
+  RemoveContentData: () => {},
+
+  EditHeader: () => {}
 }
 
 const editorContext = createContext(EditorData);
 
 function EditorDataProvider(props: TEditorDataProviderProps){
-    const [content, SetContent] = useState([] as TEditorContent[]);
+    const [content, SetContent] = useState([] as TBlogContent[]);
+    const [header, SetHeader] = useState("");
 
-    const AddContent = (data: TEditorContent) => {
-        let newContent: TEditorContent[] = [...content];
+    const AddContent = (data: TBlogContent) => {
+        const newContent: TBlogContent[] = [...content];
         newContent.push(data);
 
         SetContent(newContent);
-        
-        console.log(newContent);
     }
 
-    const RemoveContent = (data: TEditorContent) => {
-        let newContent: TEditorContent[] = [...content];
+    const RemoveContent = (data: TBlogContent) => {
+        let newContent: TBlogContent[] = [...content];
         newContent = newContent.filter((item)=> item !== data);
 
         SetContent(newContent);
     }
 
+    const EditHeader = (data: string) => {
+        SetHeader(data);
+        console.log(data);
+    }
+
     return (
-        <editorContext.Provider value={{Content: content, AddContentData: AddContent, RemoveContentData: RemoveContent} as TEditorData}>
+        <editorContext.Provider value={{Header: header, Content: content, AddContentData: AddContent, RemoveContentData: RemoveContent, EditHeader: EditHeader} as TBlogData}>
             {props.children}
         </editorContext.Provider>
     )
@@ -58,10 +68,13 @@ function EditorDataProvider(props: TEditorDataProviderProps){
 export default function BlogEditor(){
     return (
         <div className = "center">
-            <EditorDataProvider>
-                <BlogEditorDisplay/>
-                <BlogEditorOptions/>
-            </EditorDataProvider>
+            <form className="w-100 center m-1">
+                <EditorDataProvider>
+                    <BlogEditorDisplay/>
+                    <BlogEditorOptions/>
+                    <SubmitBlog/>
+                </EditorDataProvider>
+            </form>
         </div>
     )
 }

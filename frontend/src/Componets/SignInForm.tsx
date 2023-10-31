@@ -33,8 +33,10 @@ export default function SignInForm(){
             }
 
             console.log(response.data, " Test");
+            userContext.SetUUID(response.data);
+            console.log(response.UUID);
             Nav("/home");
-            userContext.SetUUID(response.UUID);
+           
         })
         .catch(error => {
            console.log(error);

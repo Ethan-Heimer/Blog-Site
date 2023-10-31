@@ -1,14 +1,14 @@
-import Button from "../Button";
+
 import Content from "../ContentPage";
 import InputField from "../FromInput";
 import { useEditorData } from "./BlogEditor"
 import { GetContentComponent } from "./ContentFactory";
-import {useEffect, ReactElement,useMemo} from "react";
+import {useMemo} from "react";
 
 export default function BlogEditorDisplay(){
     const editorData = useEditorData();
 
-    let elements = useMemo(()=>{
+    const elements = useMemo(()=>{
         return editorData.Content.map(x => {
         return (<GetContentComponent data={x}/>);
        }) 
@@ -18,11 +18,11 @@ export default function BlogEditorDisplay(){
 
    
     return(
-        <form className="w-100 center m-1">
-            <Content
+        <>
+         <Content
              header={
                 <div className="center">
-                    <InputField className="font-large text-center" invisable={true} placeholder="title" onValueChanged={() => {}}/>
+                    <InputField className="font-large text-center" invisable={true} placeholder="Title" onValueChanged={(value: string) => editorData.EditHeader(value)}/>
                 </div>
              }
              content={
@@ -30,8 +30,6 @@ export default function BlogEditorDisplay(){
                     {elements}
                 </>
              }/>
-
-             <Button onClick={() => {}}>Publish</Button>
-        </form>
+        </>
     )
 }

@@ -1,13 +1,13 @@
 import {useEffect, useState} from 'react';
-import { TBlogData } from './Blog';
 import Blog from './Blog';
+import { TBlogData } from '../Editor/BlogEditor';
 
 type TBlogsDisplayProps = {
     FromUser?: string
 }
 
 export default function BlogsDisplay(props: TBlogsDisplayProps){
-    var defaultData: any[] = []
+    const defaultData: any[] = []
     const [data, setData] = useState(defaultData); 
     
     useEffect(() => {
@@ -27,13 +27,18 @@ export default function BlogsDisplay(props: TBlogsDisplayProps){
     return(
         <div className='center'>
             {data.map(x => {
-                const blogData: TBlogData={
-                    title: x.Header,
-                    content: x.Content
+                const data: TBlogData = {
+                    Header: x.Header,
+                    Content: x.Content,
+
+                    AddContentData: () => {},
+                    RemoveContentData: () => {},
+
+                    EditHeader: () => {}
                 }
 
                 return (
-                    <Blog data={blogData}/>
+                    <Blog data={data}/>
                 )
             })}
         </div>

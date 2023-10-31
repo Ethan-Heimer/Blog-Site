@@ -8,7 +8,7 @@ const app = express();
 const PORT = process.env.PORT;
 
 const blogRouter = require("./routes/blogRoutes");
-const userRouter = require("./routes/userRoutes");;
+const userRouter = require("./routes/userRoutes");
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));

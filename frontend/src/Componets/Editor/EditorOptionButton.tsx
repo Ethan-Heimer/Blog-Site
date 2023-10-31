@@ -1,23 +1,25 @@
 import { TEditorType } from "./ContentFactory";
-import {TEditorContent } from "./BlogEditor";
+import {TBlogContent } from "./BlogEditor";
 
 type TOptionsProps = {
-    IconName: String;
-    OptionName: String;
+    IconName: string;
+    OptionName: string;
     
-    Factory: <T extends TEditorType>() => TEditorContent;
-    AddFunc: (params: TEditorContent) => void;
+    Factory: <T extends TEditorType>() => TBlogContent;
+    AddFunc: (params: TBlogContent) => void;
 }
 
 export default function EditorOptionButton(props: TOptionsProps){
-    const AddData = () => {
-        const data: TEditorContent = props.Factory();
+    const AddData = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        e.preventDefault();
+        
+        const data: TBlogContent = props.Factory();
         props.AddFunc(data); 
     }
     
     return(
-       <button onClick={AddData}>
-            <div className = "bgc-three center pad-1 bind-parent hover-scale">
+       <button onClick={(e) => AddData(e)}>
+            <div className = "bgc-three center pad-1 bind-parent hover-pop">
                 <i className={`fa-solid ${props.IconName} font-xlarge parent-hover-tilt`}></i>
                 <p>{props.OptionName}</p>
             </div>

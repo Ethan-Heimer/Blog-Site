@@ -12,7 +12,7 @@ type TInputField = {
 }
 
 export default function InputField(props: TInputField){
-    const [value, setValue] = useState(""); 
+    const [_, setValue] = useState(""); 
 
     const updateValue = (value: string) => {
         setValue(value);

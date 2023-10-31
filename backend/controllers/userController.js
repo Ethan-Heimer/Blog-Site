@@ -19,7 +19,6 @@ const SignIn = async (req, res) => {
     await userModel.findOne({Username: Username})
     .then(result => {
         if(result != null && bcrypt.compare(Password, result.Password)){
-            console.
             res.json({
                 data: result.UUID,
                 message: 'Signed In Successfully',

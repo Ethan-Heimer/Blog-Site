@@ -18,6 +18,17 @@
   --transition-speed: .1s
 }
 
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: white;
+
+  font-family: 'Roboto Mono', monospace;
+  border: none;
+}
+
+
 body{
   background-color: var(--bodycolor); 
 }
@@ -37,16 +48,9 @@ textarea{
   resize: vertical;
 }
 
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  color: white;
-
-  font-family: 'Roboto Mono', monospace;
-  border: none
+button{
+  background-color: #00000000;
 }
-
 
 
 .bgc-one{
@@ -204,6 +208,14 @@ textarea{
 
 .hover-tilt:hover{
   rotate: 15deg;
+}
+
+.hover-pop{
+  transition: .1s;
+}
+
+.hover-pop:hover{
+  transform: translateY(-.5vmax);
 }
 
 .bind-parent .parent-hover-tilt{
