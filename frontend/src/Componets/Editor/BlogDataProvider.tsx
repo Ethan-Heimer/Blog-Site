@@ -1,5 +1,4 @@
 import {createContext, useState, useContext} from "react";
-import Header from "../Header";
 
 export type TBlogData = {
     Header: string;
@@ -10,7 +9,7 @@ export type TBlogData = {
     AddContentData: (param: TBlogContent) => void;
     RemoveContentData: (param: TBlogContent) => void;
    
-    EditHeader: Function;
+    EditHeader: (param: string) => void;
 }
 
 export type TBlogContent = {
@@ -33,7 +32,7 @@ const blogData: TBlogData = {
 const blogContext = createContext(blogData);
 
 type TBlogDataProps = {
-    children?: React.ReactNode | any; 
+    children?: React.ReactNode; 
 }
 
 export default function BlogDataProvider(props: TBlogDataProps){
@@ -43,8 +42,9 @@ export default function BlogDataProvider(props: TBlogDataProps){
     const BUID = new Date().getTime().toString();
 
     const addContent = (data: TBlogContent) => {
-       content.push(data);
-       setContent(content);
+       const newContent = [...content];
+       newContent.push(data);
+       setContent(newContent);
     }
 
     const removeContent = (data: TBlogContent) => {

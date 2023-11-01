@@ -20,7 +20,10 @@ const SignIn = async (req, res) => {
     .then(result => {
         if(result != null && bcrypt.compare(Password, result.Password)){
             res.json({
-                data: result.UUID,
+                data: {
+                    UUID: result.UUID,
+                    Username: result.Username
+                },
                 message: 'Signed In Successfully',
                 statusCode: 200
             })

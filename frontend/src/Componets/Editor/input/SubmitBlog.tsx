@@ -3,11 +3,14 @@
 
 import { useUserData } from "../../../App";
 import Button from "../../Button";
-import { useEditorData } from "../BlogEditor";
+import { useBlogData } from "../BlogDataProvider";
+import { useNavigate } from "react-router-dom";
 
 export default function SubmitBlog(){
-    const context = useEditorData();
+    const context = useBlogData();
     const userData = useUserData();
+
+    const Nav = useNavigate();
 
     console.log(context);
     console.log(userData);
@@ -29,6 +32,10 @@ export default function SubmitBlog(){
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(body),
+        }).then(response => {
+            Nav("/home");
+        }).catch((error) => {
+            console.log(error);
         })
     } 
     

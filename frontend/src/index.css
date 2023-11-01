@@ -3,8 +3,10 @@
 
   --color-one: #000000;
   --color-two: #DA627D55;
+  --color-three: #DA627D;
 
   --font-color-one: #DA627D;
+  --font-color-two: #a0a0a0;
   
   --block-color: #FFC94A;
   --block-shadow:#F6B057;
@@ -65,6 +67,10 @@ button{
   background-color: var(--bodycolor);
 }
 
+.bgc-four{
+  background-color: var(--color-three);
+}
+
 .bgc-invisable{
   background-color: var(--invisable);
 }
@@ -83,6 +89,10 @@ button{
 
 .font-color-one{
   color: var(--font-color-one)
+}
+
+.font-color-two{
+  color: var(--font-color-two)
 }
 
 .text-center{
@@ -224,6 +234,10 @@ button{
 
 .bind-parent:hover .parent-hover-tilt{
  rotate: -15deg; 
+}
+
+.round{
+    border-radius: 100vmax;
 }
 
 .bind-parent{}

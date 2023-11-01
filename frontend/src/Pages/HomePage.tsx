@@ -6,10 +6,6 @@ export default function HomePage(){
         <>
             <Header />
             <BlogsDisplay />
-            <BlogsDisplay />  <BlogsDisplay />
-            <BlogsDisplay />  <BlogsDisplay />
-            <BlogsDisplay />  <BlogsDisplay />
-            <BlogsDisplay />
         </>
     )
 }

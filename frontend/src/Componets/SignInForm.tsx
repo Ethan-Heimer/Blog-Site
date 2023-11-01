@@ -32,9 +32,9 @@ export default function SignInForm(){
                 return;
             }
 
-            console.log(response.data, " Test");
-            userContext.SetUUID(response.data);
-            console.log(response.UUID);
+            userContext.SetUUID(response.data.UUID);
+            userContext.SetUsername(response.data.Username);
+            console.log(response.data, "data");
             Nav("/home");
            
         })
