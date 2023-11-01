@@ -11,6 +11,12 @@
   --block-color: #FFC94A;
   --block-shadow:#F6B057;
 
+  --block-color-two: #9C89B8;
+  --block-shadow-two: #6b5f7d;
+
+  --block-color-three: #DA627D;
+  --block-shadow-three: #883e4e;
+
   --invisable: #0000000;
 
   --font-xlarge: 2.5vmax;
@@ -109,13 +115,25 @@ button{
 
 .block{
   border: none;
-  background-color: var(--block-color);
-  box-shadow: 0 10px 0 var(--block-shadow);
-
   padding: 1vmin;
 
   z-index: 10;
   position: relative;
+}
+
+.block-color-one{
+  background-color: var(--block-color);
+  box-shadow: 0 10px 0 var(--block-shadow);
+}
+
+.block-color-two{
+  background-color: var(--block-color-two);
+  box-shadow: 0 10px 0 var(--block-shadow-two); 
+}
+
+.block-color-three{
+  background-color: var(--block-color-three);
+  box-shadow: 0 10px 0 var(--block-shadow-three);
 }
 
 .row{
@@ -139,8 +157,22 @@ button{
   transition: .1s;
 }
 
-.button:hover{
+.block-color-one.button:hover{
   background-color: var(--block-shadow);
+  box-shadow: none;
+
+  transform: translateY(.4vmax);
+}
+
+.block-color-two.button:hover{
+  background-color: var(--block-shadow-two);
+  box-shadow: none;
+
+  transform: translateY(.4vmax);
+}
+
+.block-color-three:hover{ 
+  background-color: var(--block-shadow-three);
   box-shadow: none;
 
   transform: translateY(.4vmax);

@@ -12,9 +12,6 @@ export default function SubmitBlog(){
 
     const Nav = useNavigate();
 
-    console.log(context);
-    console.log(userData);
-
     const publishBlog = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault();
         
@@ -23,11 +20,9 @@ export default function SubmitBlog(){
             Content: context.Content,
             UserId: userData.UUID
         }
-
-        console.log(body);
         
-        await fetch("http://localHost:3000/blog/add", {
-            method:"POST",
+        await fetch(`http://localHost:3000/blog/append/${'100'}`, {
+            method:"PATCH",
             headers:{
                 "Content-Type": "application/json"
             },

@@ -50,7 +50,7 @@ function App() {
           <Route path='/' element={<SignIn/>} />
           <Route path='/user/create' element={<CreateUser/>}/>
           <Route path="/home" element={<HomePage/>} />
-          <Route path="/blog/create" element={<CreatePost />} />
+          <Route path="/blog/edit/:id?" element={<CreatePost />} />
           <Route path="/profile" element={<ProfilePage/>}/>
         </Routes>
       </BrowserRouter>

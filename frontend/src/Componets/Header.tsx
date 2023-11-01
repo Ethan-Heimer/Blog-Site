@@ -32,7 +32,7 @@ export default function Header(){
                 ) : (
                     <>
                         <Button onClick={() => {}}>
-                            <Link to="/blog/create" className="font-large">Create Post!</Link>
+                            <Link to="/blog/edit/" className="font-large">Create Post!</Link>
                         </Button>
 
                         <button className="hover-scale" onClick={() => Nav("/Profile")}>

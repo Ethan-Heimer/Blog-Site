@@ -1,4 +1,4 @@
-import {createContext, useState, useContext} from "react";
+import {createContext, useState, useContext, useEffect} from "react";
 
 export type TBlogData = {
     Header: string;
@@ -33,13 +33,15 @@ const blogContext = createContext(blogData);
 
 type TBlogDataProps = {
     children?: React.ReactNode; 
+
+    blogId?: string;
 }
 
 export default function BlogDataProvider(props: TBlogDataProps){
     const[header, setHeader] = useState(blogData.Header);
     const[content, setContent] = useState(blogData.Content);
 
-    const BUID = new Date().getTime().toString();
+    let BUID: string = "";
 
     const addContent = (data: TBlogContent) => {
        const newContent = [...content];
@@ -57,6 +59,25 @@ export default function BlogDataProvider(props: TBlogDataProps){
     const editHeader = (value: string) => {
         setHeader(value);
     }
+
+    useEffect(() => {
+        fetch("http://localhost:3000/blog/get/"+props.blogId)
+        .then(res => res.json())
+        .then(res => { 
+            console.log(res);
+            
+            if(res.status == 200){
+                setHeader(res.data.Header);
+                setContent(res.data.Content);
+
+                BUID = res.data.id;
+            }  
+        })
+        .catch(error => {
+            console.warn('Error', error);
+            BUID = new Date().getTime().toString();
+        })
+    })
     
     return(
         <blogContext.Provider value={{Header: header, Content: content, BUID: BUID, AddContentData: addContent, RemoveContentData: removeContent, EditHeader: editHeader }}>

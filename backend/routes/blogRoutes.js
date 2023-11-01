@@ -9,5 +9,6 @@ router.get("/get/:id", blogController.Get);
 router.get("/getAll", blogController.GetAll);
 router.get("/getAllByUser/:userid", blogController.GetAllByUser);
 router.delete("/delete/:id", blogController.Delete);
+router.patch("/append/:id", blogController.Append);
 
 module.exports = router;

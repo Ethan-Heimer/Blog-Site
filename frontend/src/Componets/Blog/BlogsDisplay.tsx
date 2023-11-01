@@ -1,6 +1,8 @@
 import {useEffect, useState} from 'react';
 import Blog from './Blog';
-import { TBlogData } from '../Editor/BlogEditor';
+
+import { useUserData } from '../../App';
+import { TBlogData } from '../Editor/BlogDataProvider';
 
 type TBlogsDisplayProps = {
     FromUser?: string
@@ -8,7 +10,8 @@ type TBlogsDisplayProps = {
 
 export default function BlogsDisplay(props: TBlogsDisplayProps){
     const defaultData: any[] = []
-    const [data, setData] = useState(defaultData); 
+    const [data, setData] = useState(defaultData);
+    const userData = useUserData();
     
     useEffect(() => {
         fetch("http://localhost:3000/blog/getall")
@@ -27,18 +30,10 @@ export default function BlogsDisplay(props: TBlogsDisplayProps){
     return(
         <div className='center'>
             {data.map(x => {
-                const data: TBlogData = {
-                    Header: x.Header,
-                    Content: x.Content,
-
-                    AddContentData: () => {},
-                    RemoveContentData: () => {},
-
-                    EditHeader: () => {}
-                }
-
+                console.log(x._id);
+                
                 return (
-                    <Blog data={data}/>
+                    <Blog Id={x._id} Header={x.Header} Content={x.Content} editable={props.FromUser == userData.UUID}/>
                 )
             })}
         </div>

@@ -7,7 +7,7 @@ import {useMemo} from "react";
 
 export default function BlogEditorDisplay(){
     const data = useBlogData();
-    console.log(data.BUID, "blog");
+ 
 
     const elements = useMemo(()=>{
         return data.Content.map(x => {
@@ -15,7 +15,7 @@ export default function BlogEditorDisplay(){
        }) 
     }, [data])
    
-   console.log(data)
+  
 
     return(
         <>

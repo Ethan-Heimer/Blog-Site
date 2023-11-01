@@ -38,11 +38,29 @@ const Delete = async(req, res) => {
     TryDataBaseMethod(() => blogModel.findByIdAndDelete(id), res, "Blog Deleted");
 }
 
+const Append = async(req, res) => {
+    let id = req.params.id;
+
+    try{
+        await blogModel.findByIdAndUpdate(id, req.body)
+        .then(() => {
+            res.send({
+                data: "Blog Updated",
+                status: 200
+            })
+        })
+    }
+    catch(error){
+       Add(req, res);
+    }
+}
+
 module.exports = {
     Add,
     Edit,
     Get,
     GetAll,
     GetAllByUser,
-    Delete
+    Delete, 
+    Append
 }

@@ -8,7 +8,7 @@ type TContentProperties = {
 export default function Content(props: TContentProperties){
     return(
         <div className={"w-50 " + props.className}>
-            <div className="block">
+            <div className="block block-color-one">
                 {props.header}
             </div>
 
