@@ -5,9 +5,11 @@ export type TBlogData = {
     Content: string;
 
     BUID: string;
+    ThumbNail: string;
    
     EditContent: (param: string) => void;
     EditHeader: (param: string) => void;
+    SetThumbNail: (param: string) => void;
 }
 
 export type TBlogContent = {
@@ -20,9 +22,11 @@ const blogData: TBlogData = {
     Content: "",
 
     BUID: "" ,
+    ThumbNail: "",
 
     EditContent: () => {},
-    EditHeader: () => {}
+    EditHeader: () => {},
+    SetThumbNail: () => {}
 }
 
 const blogContext = createContext(blogData);
@@ -37,6 +41,7 @@ export default function BlogDataProvider(props: TBlogDataProps){
     const[header, setHeader] = useState("");
     const[content, setContent] = useState("");
     const[buid, setBUID] = useState("");
+    const[thumbNail, setThumbNail] = useState("");
 
     useEffect(() => {
         fetch("http://localhost:3000/blog/get/"+props.blogId)
@@ -59,7 +64,7 @@ export default function BlogDataProvider(props: TBlogDataProps){
 
     
     return(
-        <blogContext.Provider value={{Header: header, Content: content, BUID: buid, EditContent: setContent, EditHeader: setHeader}}>
+        <blogContext.Provider value={{Header: header, Content: content, BUID: buid, ThumbNail:thumbNail, EditContent: setContent, EditHeader: setHeader, SetThumbNail: setThumbNail}}>
             {props.children};
         </blogContext.Provider>
     )

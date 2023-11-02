@@ -186,6 +186,10 @@ button{
   transform: translateY(.4vmax);
 }
 
+.w-20{
+  width: 20%;
+}
+
 .w-50{
   width: 50%;
 }

@@ -6,6 +6,8 @@ import React from 'react'
 import {  useState, useContext } from 'react';
 import CreatePost from './Pages/CreatePost'
 import ProfilePage from './Pages/ProfilePage'
+import {Cloudinary} from "@cloudinary/url-gen";
+
 
 type TUserData = {
   UUID: string;
@@ -42,7 +44,8 @@ function UserIdProvider(props: TContextProps){
 
 
 function App() {
- 
+  const cld = new Cloudinary({cloud: {cloudName: 'dv3vwo8if'}});
+
   return (
     <UserIdProvider>
        <BrowserRouter>

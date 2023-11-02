@@ -12,17 +12,18 @@ export default function SubmitBlog(){
 
     const Nav = useNavigate();
     console.log(context.BUID, "BUID");
-
+    
     const publishBlog = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault();
         
         const body = {
             Header: context.Header,
             Content: context.Content,
-            UserId: userData.UUID
-        }
+            UserId: userData.UUID,
+            ThumbnailURL: context.ThumbNail
+        }  
 
-        
+        console.log(body);
         
         await fetch("http://localHost:3000/blog/append/"+context.BUID, {
             method:"PATCH",

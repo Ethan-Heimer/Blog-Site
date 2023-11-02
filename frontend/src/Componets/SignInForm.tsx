@@ -46,6 +46,7 @@ export default function SignInForm(){
     return (
         <>
             <Content
+            width="w-50"
             header={(
                 <h1 className="center">Sign In</h1>
             )}

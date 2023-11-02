@@ -3,6 +3,7 @@ import Blog from './Blog';
 
 import { useUserData } from '../../App';
 import { TBlogData } from '../Editor/BlogDataProvider';
+import BlogCard from './BlogCard';
 
 type TBlogsDisplayProps = {
     FromUser?: string
@@ -24,14 +25,16 @@ export default function BlogsDisplay(props: TBlogsDisplayProps){
             }
 
             setData(res.data);
+            console.log(res.data);
         })
     },[])
     
     return(
         <div className='center'>
             {data.map(x => {
+                
                 return (
-                    <Blog Id={x._id} Header={x.Header} Content={x.Content} editable={props.FromUser == userData.UUID}/>
+                    <BlogCard id={x._id} title={x.Header} thumbnail={x.ThumbnailUrl} editable={props.FromUser == userData.UUID}/>
                 )
             })}
         </div>

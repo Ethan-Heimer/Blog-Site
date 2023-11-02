@@ -3,11 +3,12 @@ type TContentProperties = {
     content: JSX.Element,
 
     className?: String;
+    width: string;
 };
 
 export default function Content(props: TContentProperties){
     return(
-        <div className={"w-90 " + props.className}>
+        <div className={props.width + " " + props.className}>
             <div className="block block-color-one">
                 {props.header}
             </div>
