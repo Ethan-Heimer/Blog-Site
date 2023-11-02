@@ -30,8 +30,6 @@ export default function BlogsDisplay(props: TBlogsDisplayProps){
     return(
         <div className='center'>
             {data.map(x => {
-                console.log(x._id);
-                
                 return (
                     <Blog Id={x._id} Header={x.Header} Content={x.Content} editable={props.FromUser == userData.UUID}/>
                 )

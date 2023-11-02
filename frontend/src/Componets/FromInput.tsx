@@ -9,22 +9,18 @@ type TInputField = {
     className? :string
 
     onValueChanged: Function;
+    defaultValue?: string;
 }
 
 export default function InputField(props: TInputField){
-    const [_, setValue] = useState(""); 
-
-    const updateValue = (value: string) => {
-        setValue(value);
-        props.onValueChanged(value);
-    }
+    
 
     return (
         <div className="column m-1">
             {
                 props.lable && <label className="font-med">{props.lable}</label>
             }
-            <input className={(props.invisable ? "bgc-invisable" : "bgc-three") + " " + props.className} type={props.type != undefined ? props.type : "text"} name={props.lable} onChange={e => updateValue(e.target.value)} placeholder={props.placeholder}/>
+            <input className={(props.invisable ? "bgc-invisable" : "bgc-three") + " " + props.className} type={props.type != undefined ? props.type : "text"} name={props.lable} onChange={e => props.onValueChanged(e.target.value)} placeholder={props.placeholder} defaultValue={props.defaultValue}/>
         </div>
     )
 }

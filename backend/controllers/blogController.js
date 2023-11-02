@@ -40,19 +40,17 @@ const Delete = async(req, res) => {
 
 const Append = async(req, res) => {
     let id = req.params.id;
+    console.log("ran");
 
-    try{
-        await blogModel.findByIdAndUpdate(id, req.body)
-        .then(() => {
-            res.send({
-                data: "Blog Updated",
-                status: 200
-            })
-        })
-    }
-    catch(error){
-       Add(req, res);
-    }
+    await blogModel.findById(id).then(resault => {
+        if(resault == undefined)
+            throw("Blog not Found"); 
+        console.log(resault, "edit");
+        Edit(req, res)
+    }).catch(error => {
+        console.log("add");
+        Add(req, res);
+    });
 }
 
 module.exports = {

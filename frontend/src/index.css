@@ -115,7 +115,7 @@ button{
 
 .block{
   border: none;
-  padding: 1vmin;
+  padding: .75vmin;
 
   z-index: 10;
   position: relative;
@@ -123,7 +123,7 @@ button{
 
 .block-color-one{
   background-color: var(--block-color);
-  box-shadow: 0 10px 0 var(--block-shadow);
+  box-shadow: 0 .4vmax 0 var(--block-shadow);
 }
 
 .block-color-two{
@@ -149,8 +149,16 @@ button{
   margin: 1vmax;
 }
 
+.m-2{
+  margin: 2.5vmax;
+}
+
 .m-inline-1{
   margin-inline:1vmax ;
+}
+
+.m-inline-2{
+  margin-inline: 2.5vmax;
 }
 
 .button{
@@ -273,6 +281,48 @@ button{
 }
 
 .bind-parent{}
+
+.blog
+{
+   font-size: var(--font-med);
+   display: flex;
+   flex-direction: column;
+}
+
+.blog img{
+  width: 50%;
+
+  transform-origin: center;
+  transform: translateX(30%);
+
+  margin-inline: 0;
+  
+}
+.blog h1{
+  font-size: var(--font-xlarge);
+  margin-block: 1vmax;
+  
+}
+
+.blog h2{
+  margin-block: 1vmax;
+}
+
+.blog h3{
+  margin-block: 1vmax;
+}
+
+.blog p{
+  margin-left: 1vmax;
+  margin-block: 2vmax;
+
+  word-wrap: break-word;
+  text-indent: 2.5vmax;
+}
+
+.blog ul, ol{
+  margin-left: 5vmax;
+}
 
 
 

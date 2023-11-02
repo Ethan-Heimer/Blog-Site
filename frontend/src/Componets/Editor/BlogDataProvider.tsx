@@ -2,13 +2,11 @@ import {createContext, useState, useContext, useEffect} from "react";
 
 export type TBlogData = {
     Header: string;
-    Content: Array<TBlogContent>;
+    Content: string;
 
     BUID: string;
    
-    AddContentData: (param: TBlogContent) => void;
-    RemoveContentData: (param: TBlogContent) => void;
-   
+    EditContent: (param: string) => void;
     EditHeader: (param: string) => void;
 }
 
@@ -19,13 +17,11 @@ export type TBlogContent = {
 
 const blogData: TBlogData = {
     Header: "",
-    Content: [],
+    Content: "",
 
     BUID: "" ,
 
-    AddContentData: () => {},
-    RemoveContentData: () => {},
-
+    EditContent: () => {},
     EditHeader: () => {}
 }
 
@@ -38,49 +34,32 @@ type TBlogDataProps = {
 }
 
 export default function BlogDataProvider(props: TBlogDataProps){
-    const[header, setHeader] = useState(blogData.Header);
-    const[content, setContent] = useState(blogData.Content);
-
-    let BUID: string = "";
-
-    const addContent = (data: TBlogContent) => {
-       const newContent = [...content];
-       newContent.push(data);
-       setContent(newContent);
-    }
-
-    const removeContent = (data: TBlogContent) => {
-        let newContent: TBlogContent[] = [...content];
-        newContent = newContent.filter((item)=> item !== data);
-
-        setContent(newContent);
-    }
-
-    const editHeader = (value: string) => {
-        setHeader(value);
-    }
+    const[header, setHeader] = useState("");
+    const[content, setContent] = useState("");
+    const[buid, setBUID] = useState("");
 
     useEffect(() => {
         fetch("http://localhost:3000/blog/get/"+props.blogId)
         .then(res => res.json())
         .then(res => { 
-            console.log(res);
-            
             if(res.status == 200){
+                console.log(res.data, "data");
+                
                 setHeader(res.data.Header);
                 setContent(res.data.Content);
 
-                BUID = res.data.id;
+                setBUID(res.data._id);
             }  
         })
         .catch(error => {
             console.warn('Error', error);
-            BUID = new Date().getTime().toString();
+            setBUID(new Date().getTime().toString());
         })
-    })
+    }, [])
+
     
     return(
-        <blogContext.Provider value={{Header: header, Content: content, BUID: BUID, AddContentData: addContent, RemoveContentData: removeContent, EditHeader: editHeader }}>
+        <blogContext.Provider value={{Header: header, Content: content, BUID: buid, EditContent: setContent, EditHeader: setHeader}}>
             {props.children};
         </blogContext.Provider>
     )

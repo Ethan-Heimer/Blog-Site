@@ -1,18 +1,15 @@
 import { useNavigate } from "react-router-dom";
 import Button, { ButtopnType } from "../Button";
 import Content from "../ContentPage";
-import { TBlogContent } from "../Editor/BlogDataProvider";
-
-import BlogComponent from "./BlogContentFactory";
+import Markdown from "markdown-to-jsx";
 
 type TBlogProps = {
     Header: string;
-    Content: TBlogContent[];
+    Content: string;
     Id: string
 
     editable?: boolean;
 }
-
 
 export default function Blog(props: TBlogProps){
     const Nav = useNavigate();
@@ -21,9 +18,14 @@ export default function Blog(props: TBlogProps){
     const edit = () => {
         Nav("/blog/edit/"+props.Id);
     }
+
+    const Delete = async () => {
+        await fetch("http://localhost:3000/blog/delete/"+props.Id, {method: "DELETE"});
+        Nav("/home")
+    }
     
     return (
-        <Content className="pad-1" header={(
+        <Content className="pad-1 blog" header={(
            <div className="center-row">
                 
                 <h1 className="center font-large">{props.Header}</h1>
@@ -34,7 +36,7 @@ export default function Blog(props: TBlogProps){
                         Edit
                     </Button>
 
-                    <Button onClick={() => {}} ButtonType={ButtopnType.Danger}>
+                    <Button onClick={Delete} ButtonType={ButtopnType.Danger}>
                         Delete
                     </Button>
                 </div>}
@@ -42,13 +44,11 @@ export default function Blog(props: TBlogProps){
         )}
 
         content={(
-            <>
-                {props.Content.map(x => {
-                    return <BlogComponent data={x}/>
-                })}       
-
-                
-            </>
+            <div className="pad-1 m-1 m-inline-2">
+                <Markdown>
+                    {props.Content}
+                </Markdown>
+            </div>
         )}
         
         /> 

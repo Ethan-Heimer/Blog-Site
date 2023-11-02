@@ -1,5 +1,5 @@
 type TProfilePictureProps = {
-    size: number;
+    size: number | string;
 }
 
 export default function ProfilePicture(props: TProfilePictureProps){

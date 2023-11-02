@@ -7,8 +7,7 @@ import Header from "../Componets/Header";
 
 export default function CreatePost(){
     const params = useParams()
-    console.log(params)
-
+   
     return(
         <>
             <Header/>

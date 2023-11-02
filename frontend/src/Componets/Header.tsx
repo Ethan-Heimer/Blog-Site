@@ -6,12 +6,9 @@ import ProfilePicture from "./ProfilePicture";
 import { useNavigate } from "react-router-dom";
 
 export default function Header(){
-    console.log(localStorage.getItem("user"))
+   
     const userData = useUserData();
-    useEffect(()=>{
-        console.log(userData );
-    }, [userData]);
-
+    
     const Nav = useNavigate();
 
     return(
@@ -36,7 +33,7 @@ export default function Header(){
                         </Button>
 
                         <button className="hover-scale" onClick={() => Nav("/Profile")}>
-                            <ProfilePicture size={100}/>
+                            <ProfilePicture size={"3.5vmax"}/>
                         </button>
                     </>
                 )}
