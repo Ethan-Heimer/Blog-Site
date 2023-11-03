@@ -1,13 +1,12 @@
-import BlogCard from "../Componets/Blog/BlogCard";
 import BlogsDisplay from "../Componets/Blog/BlogsDisplay";
 import Header from "../Componets/Header";
 
 export default function HomePage(){
     return (
-        <>
+        <div className="bgi-two min-h-100">
             <Header />
-            <BlogCard title="Test" id="akjfldfbsdlkjfbslkdb" thumbnail="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQgByBT5IiAT_a2x9pUVb4VMoOrlzHH7Jrzj-HB5jzHlR4lNLMS"/>
+            <p className="center m-1 font-xlarge text-shadow">Blogs</p>
             <BlogsDisplay />
-        </>
+        </div>
     )
 }

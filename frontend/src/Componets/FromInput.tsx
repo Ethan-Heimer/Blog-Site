@@ -10,6 +10,8 @@ type TInputField = {
 
     onValueChanged: Function;
     defaultValue?: string;
+
+    required? :boolean
 }
 
 export default function InputField(props: TInputField){
@@ -20,7 +22,7 @@ export default function InputField(props: TInputField){
             {
                 props.lable && <label className="font-med">{props.lable}</label>
             }
-            <input className={(props.invisable ? "bgc-invisable" : "bgc-three") + " " + props.className} type={props.type != undefined ? props.type : "text"} name={props.lable} onChange={e => props.onValueChanged(e.target.value)} placeholder={props.placeholder} defaultValue={props.defaultValue}/>
+            <input className={(props.invisable ? "bgc-invisable" : "bgc-three") + " " + props.className} type={props.type != undefined ? props.type : "text"} name={props.lable} onChange={e => props.onValueChanged(e.target.value)} placeholder={props.placeholder} defaultValue={props.defaultValue} required={props.required}/>
         </div>
     )
 }

@@ -3,7 +3,7 @@ import SignInForm from "../Componets/SignInForm";
 
 export default function SignIn(){
     return (
-        <>
+        <div className="bgi-one">
             <div className="h-100 w-100 split-row-2">
                 <Header/>
                 <div className="center">
@@ -11,6 +11,6 @@ export default function SignIn(){
                    <SignInForm/>
                 </div>
             </div>
-        </>
+        </div>
     )
 }

@@ -46,7 +46,7 @@ export default function CreateUserForm(){
     return (
         <>
         <Content
-        width='w-50'
+        className='w-50'
         header={(
             <h1 className="center">Create Account</h1>
         )}

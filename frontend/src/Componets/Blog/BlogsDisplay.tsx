@@ -30,11 +30,11 @@ export default function BlogsDisplay(props: TBlogsDisplayProps){
     },[])
     
     return(
-        <div className='center'>
+        <div className='center-row wrap'>
             {data.map(x => {
                 
                 return (
-                    <BlogCard id={x._id} title={x.Header} thumbnail={x.ThumbnailUrl} editable={props.FromUser == userData.UUID}/>
+                    <BlogCard id={x._id} title={x.Header} thumbnail={x.ThumbnailURL} editable={props.FromUser == userData.UUID}/>
                 )
             })}
         </div>

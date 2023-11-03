@@ -6,7 +6,7 @@ import React from 'react'
 import {  useState, useContext } from 'react';
 import CreatePost from './Pages/CreatePost'
 import ProfilePage from './Pages/ProfilePage'
-import {Cloudinary} from "@cloudinary/url-gen";
+import BlogPage from './Pages/BlogPage'
 
 
 type TUserData = {
@@ -44,8 +44,6 @@ function UserIdProvider(props: TContextProps){
 
 
 function App() {
-  const cld = new Cloudinary({cloud: {cloudName: 'dv3vwo8if'}});
-
   return (
     <UserIdProvider>
        <BrowserRouter>
@@ -55,6 +53,7 @@ function App() {
           <Route path="/home" element={<HomePage/>} />
           <Route path="/blog/edit/:id?" element={<CreatePost />} />
           <Route path="/profile" element={<ProfilePage/>}/>
+          <Route path="/blog/display/:id" element={<BlogPage/>} />
         </Routes>
       </BrowserRouter>
     </UserIdProvider>

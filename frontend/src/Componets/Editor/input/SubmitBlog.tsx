@@ -5,13 +5,21 @@ import { useUserData } from "../../../App";
 import Button from "../../Button";
 import { useBlogData } from "../BlogDataProvider";
 import { useNavigate } from "react-router-dom";
+import {useMemo} from "react";
 
 export default function SubmitBlog(){
+   
+    
     const context = useBlogData();
     const userData = useUserData();
 
     const Nav = useNavigate();
     console.log(context.BUID, "BUID");
+
+    let display = useMemo(() => {
+        console.log(context.Thumbnail)
+        return context.Header != '' && context.Thumbnail != '';
+    }, [context])
     
     const publishBlog = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault();
@@ -20,7 +28,7 @@ export default function SubmitBlog(){
             Header: context.Header,
             Content: context.Content,
             UserId: userData.UUID,
-            ThumbnailURL: context.ThumbNail
+            ThumbnailURL: context.Thumbnail
         }  
 
         console.log(body);
@@ -39,8 +47,10 @@ export default function SubmitBlog(){
     } 
     
     return(
-        <Button className="m-1" onClick={(e) => publishBlog(e)}>
-            <p className="font-large">Publish!</p>
-        </Button>
+        <>
+            {display && <Button className="m-1" onClick={(e) => publishBlog(e)}>
+                <p className="font-large">Publish!</p>
+            </Button>}
+        </>
     )
 }

@@ -14,7 +14,7 @@ type TCardProps = {
 export default function BlogCard(props: TCardProps){
     const Nav = useNavigate();
 
-     const edit = () => {
+    const edit = () => {
         Nav("/blog/edit/"+props.id);
     }
 
@@ -22,29 +22,36 @@ export default function BlogCard(props: TCardProps){
         await fetch("http://localhost:3000/blog/delete/"+props.id, {method: "DELETE"});
         Nav("/home")
     }
+
+    const Goto = () => {
+        Nav("/blog/display/"+props.id);
+    }
+
     return (
-        <Content width="w-20"
-        header={
-            <p className="font-large center">{props.title}</p>
-        }
-        content={
-        <div className="center">
-            <img className="w-90" src={props.thumbnail} title="Thumbnail" alt="image"></img>
-            <Button className="m-1 font-med" onClick={() => {}}>
-                Read
-            </Button>
-            {props.editable && 
-                <div>
-                    <Button onClick={edit} ButtonType={ButtopnType.Accent}>
-                         Edit
-                    </Button>
+        <button onClick={Goto}>
+            <Content className="min-w-400 m-1 hover-pop shadow hover-underline m-down-5"
+            header={
+                <p className="font-med center">{props.title}</p>
+            }
+            content={
+            <div className="center">
+                
+                <img className="thumbnail" src={props.thumbnail} title="Thumbnail" alt="image"></img>
+                
+                {props.editable && 
+                    <div className="m-1">
+                        <Button onClick={edit} ButtonType={ButtopnType.Accent}>
+                            <p className="font-med">Edit</p>
+                        </Button>
 
-                    <Button onClick={Delete} ButtonType={ButtopnType.Danger}>
-                        Delete
-                    </Button>
-                </div>}
+                        <Button onClick={Delete} ButtonType={ButtopnType.Danger}>
+                            <p className="font-med">Delete</p>
+                        </Button>
+                    </div>}
 
-        </div>}
-        />
+            </div>}
+
+            />
+         </button>
     )
 }

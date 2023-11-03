@@ -12,8 +12,8 @@ export default function Header(){
     const Nav = useNavigate();
 
     return(
-        <header className="bgc-one font-xlarge pad-1 row spread g-1 h-10">
-            Web.IO {userData.UUID} {userData.Username}
+        <header className="bgc-one font-xlarge pad-1 row spread g-1 h-10 shadow">
+            Web.IO
             <div className="row center-row">
                 
                 {userData.UUID == "" ? (

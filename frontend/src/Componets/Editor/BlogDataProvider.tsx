@@ -5,11 +5,11 @@ export type TBlogData = {
     Content: string;
 
     BUID: string;
-    ThumbNail: string;
+    Thumbnail: string;
    
     EditContent: (param: string) => void;
     EditHeader: (param: string) => void;
-    SetThumbNail: (param: string) => void;
+    SetThumbnail: (param: string) => void;
 }
 
 export type TBlogContent = {
@@ -22,11 +22,11 @@ const blogData: TBlogData = {
     Content: "",
 
     BUID: "" ,
-    ThumbNail: "",
+    Thumbnail: "",
 
     EditContent: () => {},
     EditHeader: () => {},
-    SetThumbNail: () => {}
+    SetThumbnail: () => {}
 }
 
 const blogContext = createContext(blogData);
@@ -41,7 +41,7 @@ export default function BlogDataProvider(props: TBlogDataProps){
     const[header, setHeader] = useState("");
     const[content, setContent] = useState("");
     const[buid, setBUID] = useState("");
-    const[thumbNail, setThumbNail] = useState("");
+    const[thumbnail, setThumbnail] = useState("");
 
     useEffect(() => {
         fetch("http://localhost:3000/blog/get/"+props.blogId)
@@ -54,6 +54,7 @@ export default function BlogDataProvider(props: TBlogDataProps){
                 setContent(res.data.Content);
 
                 setBUID(res.data._id);
+                setThumbnail(res.data.ThumbnailURL);
             }  
         })
         .catch(error => {
@@ -64,8 +65,8 @@ export default function BlogDataProvider(props: TBlogDataProps){
 
     
     return(
-        <blogContext.Provider value={{Header: header, Content: content, BUID: buid, ThumbNail:thumbNail, EditContent: setContent, EditHeader: setHeader, SetThumbNail: setThumbNail}}>
-            {props.children};
+        <blogContext.Provider value={{Header: header, Content: content, BUID: buid, Thumbnail:thumbnail, EditContent: setContent, EditHeader: setHeader, SetThumbnail: setThumbnail}}>
+            {props.children}
         </blogContext.Provider>
     )
 }

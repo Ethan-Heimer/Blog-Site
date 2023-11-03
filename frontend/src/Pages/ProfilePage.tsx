@@ -12,7 +12,7 @@ export default function ProfilePage(){
 
             <ProfileDataDisplay/>
 
-            <p className="font-xlarge center m-1">User Blogs</p>
+            <p className="font-xlarge center m-1 text-shadow">User Blogs</p>
             <BlogsDisplay FromUser={userData.UUID}/>
         </>
     )

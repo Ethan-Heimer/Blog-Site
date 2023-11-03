@@ -14,7 +14,7 @@ export default function TextBox(props: TTextBoxData){
     
     return (
         <>
-            <textarea className="w-100 bgc-three font-med" onChange={e => props.onValueChanged(e.target.value)} defaultValue={startingValue}/>
+            <textarea placeholder="enter markup..." className="w-100 bgc-three font-med h-50" onChange={e => props.onValueChanged(e.target.value)} defaultValue={startingValue}/>
         </>
     )
 }
