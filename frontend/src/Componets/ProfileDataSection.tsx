@@ -5,7 +5,7 @@ export default function ProfileDataDisplay(){
     const userData = useUserData();
     
     return(
-        <div className = "row bgc-one pad-1">
+        <div className = "row background-blur shadow-down pad-1">
             <ProfilePicture size={500}/>
             <div>
                 <p className='m-1 font-xlarge'>

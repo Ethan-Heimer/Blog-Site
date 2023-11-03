@@ -5,31 +5,35 @@ import { useEffect } from "react";
 import ProfilePicture from "./ProfilePicture";
 import { useNavigate } from "react-router-dom";
 
-export default function Header(){
+type THeaderProps = {
+    shadow?: boolean;
+}
+
+export default function Header(props: THeaderProps){
    
     const userData = useUserData();
     
     const Nav = useNavigate();
 
     return(
-        <header className="bgc-one font-xlarge pad-1 row spread g-1 h-10 shadow">
+        <header className={"font-xlarge pad-1 row spread g-1 h-10 background-blur" + (props.shadow == true || props.shadow == undefined ? " shadow" : "")}>
             Web.IO
             <div className="row center-row">
                 
                 {userData.UUID == "" ? (
                     <>
                         <Button onClick={() => {}}>
-                            <Link to="/user/create" className="font-large">Get Started</Link>
+                            <Link to="/user/create" className="font-large text-block-shadow">Get Started</Link>
                         </Button>
 
                         <Button onClick={() => {}}>
-                            <Link to="/" className="font-large">Log In!</Link>
+                            <Link to="/" className="font-large text-block-shadow">Log In!</Link>
                         </Button>
                     </>
                 ) : (
                     <>
                         <Button onClick={() => {}}>
-                            <Link to="/blog/edit/" className="font-large">Create Post!</Link>
+                            <Link to="/blog/edit/" className="font-large text-block-shadow">Create Post!</Link>
                         </Button>
 
                         <button className="hover-scale" onClick={() => Nav("/Profile")}>

@@ -7,13 +7,13 @@ export default function ProfilePage(){
     const userData = useUserData();
     
     return(
-        <>
-            <Header/>
+        <div className="bgi-two min-h-100">
+            <Header shadow={false}/>
 
             <ProfileDataDisplay/>
 
             <p className="font-xlarge center m-1 text-shadow">User Blogs</p>
             <BlogsDisplay FromUser={userData.UUID}/>
-        </>
+        </div>
     )
 }

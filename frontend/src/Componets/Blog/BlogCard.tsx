@@ -28,15 +28,15 @@ export default function BlogCard(props: TCardProps){
     }
 
     return (
-        <button onClick={Goto}>
             <Content className="min-w-400 m-1 hover-pop shadow hover-underline m-down-5"
             header={
                 <p className="font-med center">{props.title}</p>
             }
             content={
             <div className="center">
-                
-                <img className="thumbnail" src={props.thumbnail} title="Thumbnail" alt="image"></img>
+                <button onClick={Goto}>
+                    <img className="thumbnail" src={props.thumbnail} title="Thumbnail" alt="image"></img>
+                </button>
                 
                 {props.editable && 
                     <div className="m-1">
@@ -48,10 +48,7 @@ export default function BlogCard(props: TCardProps){
                             <p className="font-med">Delete</p>
                         </Button>
                     </div>}
-
             </div>}
-
             />
-         </button>
     )
 }

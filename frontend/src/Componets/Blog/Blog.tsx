@@ -15,7 +15,7 @@ export default function Blog(props: TBlogProps){
     return (
         <Content className="w-90 pad-1 blog" header={(
            <div className="center-row">
-                <h1 className="center font-large">{props.Header}</h1>
+                <h1 className="center font-large text-block-shadow">{props.Header}</h1>
            </div>
         )}
 
