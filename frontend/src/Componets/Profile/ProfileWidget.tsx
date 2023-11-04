@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import ProfilePicture from "./ProfilePicture";
 import { useNavigate } from "react-router-dom";
-import { useUserData } from "../App";
+import { useUserData } from "../../App";
 
 type TProfileProps = {
     UUID: string;
     pictureSize: string | number;
+
+    className?: string;
 }
 
 export default function ProfileWidget(props: TProfileProps){
@@ -16,14 +18,10 @@ export default function ProfileWidget(props: TProfileProps){
 
     const Nav = useNavigate()
     
-    useEffect(() => {
-        console.log("use effect");
-        
+    useEffect(() => {  
         fetch("http://localHost:3000/user/get/"+props.UUID)
         .then(res => res.json())
-        .then(response => {
-            console.log(response, "response")
-            
+        .then(response => { 
             if(response.statusCode == 200){
                 setUsername(response.data.Username)
                 setAvatar(response.data.ProfilePicture);
@@ -35,7 +33,7 @@ export default function ProfileWidget(props: TProfileProps){
     }, [userData.ProfilePicture, props.UUID])
 
     return(
-        <div className="row">
+        <div className={"row " + (props.className != undefined ? props.className : "")}>
             <button className="hover-scale" onClick={() => Nav("/Profile/"+props.UUID)}>
                 <ProfilePicture url={avatar} size={props.pictureSize}/>
             </button>

@@ -7,6 +7,7 @@ import {  useState, useContext } from 'react';
 import CreatePost from './Pages/CreatePost'
 import ProfilePage from './Pages/ProfilePage'
 import BlogPage from './Pages/BlogPage'
+import SocketIOProvider from './Componets/SockeIOProvider'
 
 
 type TUserData = {
@@ -80,6 +81,7 @@ function UserIdProvider(props: TContextProps){
 function App() {
   return (
     <UserIdProvider>
+      <SocketIOProvider>
        <BrowserRouter>
         <Routes>
           <Route path='/' element={<SignIn/>} />
@@ -90,6 +92,7 @@ function App() {
           <Route path="/blog/display/:id" element={<BlogPage/>} />
         </Routes>
       </BrowserRouter>
+      </SocketIOProvider>
     </UserIdProvider>
   )
 }

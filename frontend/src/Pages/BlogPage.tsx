@@ -11,15 +11,17 @@ export default function BlogPage(){
     const[author, setAuthor] = useState('');
 
     useEffect(() => {
+        console.log("test");
         fetch("http://localhost:3000/blog/get/"+params.id)
         .then(res => res.json())
         .then(res => { 
             if(res.status == 200){
-                console.log(res.data.UserId, "data");
                 
                 setHeader(res.data.Header);
                 setContent(res.data.Content);
                 setAuthor(res.data.UserId);
+
+               
             }  
         })
         .catch(error => {
@@ -32,7 +34,7 @@ export default function BlogPage(){
             <Header />
 
             <div className="center">
-                <Blog AuthorId={author} Header={header} Content={content}/>
+                <Blog BlogId={params.id as string} AuthorId={author} Header={header} Content={content}/>
             </div>
         </div>
     )

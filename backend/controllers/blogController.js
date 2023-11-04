@@ -8,7 +8,7 @@ const Add = async (req, res) => {
 
 const Edit = async (req, res) => {
     let id = req.params.id;
-    console.log(id);
+    console.log(id, "id");
 
     await TryDataBaseMethod(() => blogModel.findByIdAndUpdate(id, {
         $set: req.body
@@ -19,7 +19,7 @@ const Edit = async (req, res) => {
 const Get = async (req, res) => { 
     let id = req.params.id;
 
-    console.log(id);
+    console.log(id, "id get");
     TryDataBaseMethod(() => blogModel.findById(id), res, "Blog Got")
 }
 
@@ -53,6 +53,24 @@ const Append = async(req, res) => {
     });
 }
 
+const PostComment = async(id, uuid, comment) => {
+    await blogModel.findById(id).then( async(resault) => {
+        if(resault == undefined){
+            return;
+        }
+    
+        console.log(resault);
+      
+        resault.Comments.push({
+            PosterId: uuid,
+            Message: comment
+        })
+
+        await blogModel.findByIdAndUpdate(id, {Comments: resault.Comments})
+        
+    }).catch(error => console.log(error));
+}
+
 module.exports = {
     Add,
     Edit,
@@ -60,5 +78,6 @@ module.exports = {
     GetAll,
     GetAllByUser,
     Delete, 
-    Append
+    Append,
+    PostComment
 }

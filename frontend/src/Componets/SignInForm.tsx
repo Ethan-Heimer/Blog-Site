@@ -1,8 +1,8 @@
-import Content from "../Componets/ContentPage";
-import InputField from "../Componets/FromInput";
-import Button from "./Button";
+import Content from "./Profile/ContentPage";
+import InputField from "./Utilities/FromInput";
+import Button from "./Utilities/Button";
 import {useState} from "react";
-import ErrorMsg from "./Error";
+import ErrorMsg from "./Utilities/Error";
 import { useUserData } from "../App";
 import { useNavigate } from "react-router-dom";
 

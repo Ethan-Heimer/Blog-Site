@@ -1,9 +1,9 @@
 import React from 'react';
-import Content from "../Componets/ContentPage";
-import InputField from "../Componets/FromInput";
-import Button from "./Button";
+import Content from "./Profile/ContentPage";
+import InputField from "./Utilities/FromInput";
+import Button from "./Utilities/Button";
 import {useState} from "react";
-import ErrorMsg from "../Componets/Error";
+import ErrorMsg from "./Utilities/Error";
 
 export default function CreateUserForm(){
     const [username, setUserName] = useState("");

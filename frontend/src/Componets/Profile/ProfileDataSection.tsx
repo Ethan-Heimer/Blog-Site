@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { useUserData } from "../App";
+import { useUserData } from "../../App";
 import ProfilePicture from "./ProfilePicture";
-import UploadFile from "./UploadFile";
+import UploadFile from "../Utilities/UploadFile";
 import { useNavigate } from "react-router-dom";
 
 type TProfileDataProps = {

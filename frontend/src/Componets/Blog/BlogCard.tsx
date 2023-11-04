@@ -1,8 +1,8 @@
-import Content from "../ContentPage";
+import Content from "../Profile/ContentPage";
 import image from "../../assets/placeHolder.png";
-import Button, {ButtopnType} from "../Button";
+import Button, {ButtopnType} from "../Utilities/Button";
 import { useNavigate } from "react-router-dom";
-import ProfileWidget from "../ProfileWidget";
+import ProfileWidget from "../Profile/ProfileWidget";
 
 type TCardProps = {
     title: string;

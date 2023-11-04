@@ -74,7 +74,8 @@ input{
 }
 
 .background-blur{
-backdrop-filter: blur(6px);
+backdrop-filter: blur(10px);
+background-color: #ffffff22;
 }
 
 .left{

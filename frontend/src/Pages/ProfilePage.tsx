@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import BlogsDisplay from "../Componets/Blog/BlogsDisplay";
 import Header from "../Componets/Header";
-import ProfileDataDisplay from "../Componets/ProfileDataSection";
+import ProfileDataDisplay from "../Componets/Profile/ProfileDataSection";
 
 export default function ProfilePage(){
     const params = useParams();

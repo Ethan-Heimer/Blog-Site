@@ -1,9 +1,9 @@
 
-import Content from "../ContentPage";
-import InputField from "../FromInput";
-import UploadFile from "../UploadFile";
+import Content from "../Profile/ContentPage";
+import InputField from "../Utilities/FromInput";
+import UploadFile from "../Utilities/UploadFile";
 import { useBlogData } from "./BlogDataProvider";
-import TextBox from "./input/TextBoxInput";
+import TextBox from "../Utilities/TextBoxInput";
 
 export default function BlogEditorDisplay(){
     const data = useBlogData();
