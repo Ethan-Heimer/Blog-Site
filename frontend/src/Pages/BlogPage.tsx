@@ -8,16 +8,18 @@ export default function BlogPage(){
 
     const[header, setHeader] = useState('');
     const[content, setContent] = useState('');
+    const[author, setAuthor] = useState('');
 
     useEffect(() => {
         fetch("http://localhost:3000/blog/get/"+params.id)
         .then(res => res.json())
         .then(res => { 
             if(res.status == 200){
-                console.log(res.data, "data");
+                console.log(res.data.UserId, "data");
                 
                 setHeader(res.data.Header);
                 setContent(res.data.Content);
+                setAuthor(res.data.UserId);
             }  
         })
         .catch(error => {
@@ -30,8 +32,7 @@ export default function BlogPage(){
             <Header />
 
             <div className="center">
-
-                <Blog Header={header} Content={content}/>
+                <Blog AuthorId={author} Header={header} Content={content}/>
             </div>
         </div>
     )

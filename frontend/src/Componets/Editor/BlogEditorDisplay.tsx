@@ -20,7 +20,7 @@ export default function BlogEditorDisplay(){
              content={
                 <>
                     <TextBox defaultValue={data.Content} onValueChanged={data.EditContent}/>
-                    <UploadFile onUpload={(d) => data.SetThumbnail(d)}/>
+                    <UploadFile label="Thumbnail" onUpload={(d) => data.SetThumbnail(d)}/>
                 </>
              }/>
         </>

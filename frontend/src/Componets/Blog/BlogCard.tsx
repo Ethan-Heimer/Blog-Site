@@ -2,11 +2,14 @@ import Content from "../ContentPage";
 import image from "../../assets/placeHolder.png";
 import Button, {ButtopnType} from "../Button";
 import { useNavigate } from "react-router-dom";
+import ProfileWidget from "../ProfileWidget";
 
 type TCardProps = {
     title: string;
     thumbnail: string
     id: string;
+
+    authorId: string;
 
     editable?: boolean;
 }
@@ -33,7 +36,9 @@ export default function BlogCard(props: TCardProps){
                 <p className="font-med center">{props.title}</p>
             }
             content={
-            <div className="center">
+            <div>
+                <div className="center">
+
                 <button onClick={Goto}>
                     <img className="thumbnail" src={props.thumbnail} title="Thumbnail" alt="image"></img>
                 </button>
@@ -48,6 +53,8 @@ export default function BlogCard(props: TCardProps){
                             <p className="font-med">Delete</p>
                         </Button>
                     </div>}
+                </div>
+                <ProfileWidget UUID={props.authorId} pictureSize={"1.8vmax"}/>
             </div>}
             />
     )

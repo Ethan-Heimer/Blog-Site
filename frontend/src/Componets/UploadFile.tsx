@@ -2,6 +2,7 @@ import axios from "axios";
 
 type TUploadFileProps = {
     onUpload: (url: string) => void;
+    label: string;
 }
 
 export default function UploadFile(props: TUploadFileProps){
@@ -25,7 +26,7 @@ export default function UploadFile(props: TUploadFileProps){
 
     return(
         <>
-            <label className="font-med m-inline-1">Thumbnail</label>
+            <label className="font-med m-inline-1">{props.label}</label>
             <input type="file" name="image" onChange={onValueChanged}></input>
         </>
     )

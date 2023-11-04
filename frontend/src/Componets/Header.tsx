@@ -16,7 +16,7 @@ export default function Header(props: THeaderProps){
     const Nav = useNavigate();
 
     return(
-        <header className={"font-xlarge pad-1 row spread g-1 h-10 background-blur" + (props.shadow == true || props.shadow == undefined ? " shadow" : "")}>
+        <header className={"font-xlarge pad-1 row spread g-1 h-10 background-blur sticky" + (props.shadow == true || props.shadow == undefined ? " shadow" : "")}>
             Web.IO
             <div className="row center-row">
                 
@@ -36,8 +36,8 @@ export default function Header(props: THeaderProps){
                             <Link to="/blog/edit/" className="font-large text-block-shadow">Create Post!</Link>
                         </Button>
 
-                        <button className="hover-scale" onClick={() => Nav("/Profile")}>
-                            <ProfilePicture size={"3.5vmax"}/>
+                        <button className="hover-scale" onClick={() => Nav("/Profile/"+userData.UUID)}>
+                            <ProfilePicture url={userData.ProfilePicture} size={"3.5vmax"}/>
                         </button>
                     </>
                 )}

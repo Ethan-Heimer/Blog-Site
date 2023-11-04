@@ -32,8 +32,12 @@ export default function SignInForm(){
                 return;
             }
 
+            console.log(response.data);
+
             userContext.SetUUID(response.data.UUID);
             userContext.SetUsername(response.data.Username);
+            userContext.SetProfilePicture(response.data.ProfilePicture);
+
             console.log(response.data, "data");
             Nav("/home");
            

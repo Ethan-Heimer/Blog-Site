@@ -15,7 +15,9 @@ export default function BlogsDisplay(props: TBlogsDisplayProps){
     const userData = useUserData();
     
     useEffect(() => {
-        fetch("http://localhost:3000/blog/getall")
+        console.log("http://localhost:3000/blog/getAll"+(props.FromUser ? props.FromUser : ""))
+
+        fetch("http://localhost:3000/blog/getAll"+(props.FromUser ? props.FromUser : ""))
         .then(result => result.json())
         .then(res => {
             if(res.status != 200)
@@ -34,7 +36,7 @@ export default function BlogsDisplay(props: TBlogsDisplayProps){
             {data.map(x => {
                 
                 return (
-                    <BlogCard id={x._id} title={x.Header} thumbnail={x.ThumbnailURL} editable={props.FromUser == userData.UUID}/>
+                    <BlogCard authorId={x.UserId} id={x._id} title={x.Header} thumbnail={x.ThumbnailURL} editable={props.FromUser == userData.UUID}/>
                 )
             })}
         </div>

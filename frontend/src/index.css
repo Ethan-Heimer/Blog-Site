@@ -22,11 +22,12 @@
   --font-xlarge: 2.5vmax;
   --font-large: 2vmax;
   --font-med: 1.2vmax;
+  --font-small: .8vmax;
 
   --transition-speed: .1s;
 
-  --backgroundImageOne: url("./Background1.png");
-  --backgroundImageTwo: url("./Background5.png");
+  --backgroundImageOne: url("./public/Background1.png");
+  --backgroundImageTwo: url("./public/Background5.png");
   --backgroundImageThree: url("./public/Background6.png");
 }
 
@@ -61,7 +62,6 @@
   font-weight: 1000;
 }
 
-
 body{
   background-color: var(--bodycolor); 
 }
@@ -75,6 +75,11 @@ input{
 
 .background-blur{
 backdrop-filter: blur(6px);
+}
+
+.left{
+  position: absolute;
+  left: 0;
 }
 
 a{
@@ -138,6 +143,10 @@ button{
 
 .font-med{
   font-size: var(--font-med);
+}
+
+.font-small{
+  font-size: var(--font-small);
 }
 
 .font-color-one{
@@ -441,6 +450,10 @@ button{
 
 .blog ul, ol{
   margin-left: 5vmax;
+}
+
+.img-fit{
+  object-fit: cover;
 }
 
 @media only screen and (min-width: 2000px){

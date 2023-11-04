@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route} from 'react-router-dom'
+import { BrowserRouter, Routes, Route, json} from 'react-router-dom'
 import SignIn from './Pages/SignIn'
 import CreateUser from './Pages/CreateUser'
 import HomePage from './Pages/HomePage'
@@ -15,6 +15,10 @@ type TUserData = {
 
   Username: string;
   SetUsername: React.Dispatch<React.SetStateAction<string>>;
+
+  ProfilePicture: string;
+  SetProfilePicture: (params: string) => void;
+  UpdateProfilePicture: (params: string) => void;
 }
 
 const UserData: TUserData = {
@@ -22,7 +26,11 @@ const UserData: TUserData = {
   SetUUID: (() => undefined) as React.Dispatch<any>,
 
   Username: "",
-  SetUsername: (() => undefined) as React.Dispatch<any>
+  SetUsername: (() => undefined) as React.Dispatch<any>,
+
+  ProfilePicture: "",
+  SetProfilePicture: () => {},
+  UpdateProfilePicture: () => {}
 }
 
 const userContext = React.createContext(UserData);
@@ -34,9 +42,35 @@ type TContextProps = {
 function UserIdProvider(props: TContextProps){
   const [uuid, SetUUID] = useState("");
   const [username, SetUsername] = useState("");
+  const [profilePicture, SetProfilePicture] = useState("");
+
+  const setAvatar = async (url: string) => {
+    console.log(url);  
+    
+    await fetch("http://localhost:3000/user/update/"+uuid, {
+        method: "post",
+        body: JSON.stringify({
+          Username: username,
+          ProfilePicture: url
+        }),
+        headers:{
+          "Content-Type": "application/json"
+      },
+      })
+      .then(res => res.json())
+      .then(res => {
+        if(res.status == 200){
+          SetProfilePicture(url);
+          console.log("profile set");
+        }
+
+        console.log(res);
+      })
+      .catch(error => console.log(error.message))
+  }
 
   return (
-    <userContext.Provider value={{UUID: uuid, SetUUID: SetUUID, Username: username, SetUsername: SetUsername} as TUserData}>
+    <userContext.Provider value={{UUID: uuid, SetUUID: SetUUID, Username: username, SetUsername: SetUsername, ProfilePicture: profilePicture, SetProfilePicture: SetProfilePicture, UpdateProfilePicture: setAvatar} as TUserData}>
       {props.children}
     </userContext.Provider>
   )
@@ -52,7 +86,7 @@ function App() {
           <Route path='/user/create' element={<CreateUser/>}/>
           <Route path="/home" element={<HomePage/>} />
           <Route path="/blog/edit/:id?" element={<CreatePost />} />
-          <Route path="/profile" element={<ProfilePage/>}/>
+          <Route path="/profile/:id" element={<ProfilePage/>}/>
           <Route path="/blog/display/:id" element={<BlogPage/>} />
         </Routes>
       </BrowserRouter>

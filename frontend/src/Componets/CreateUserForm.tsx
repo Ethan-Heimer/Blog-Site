@@ -2,7 +2,7 @@ import React from 'react';
 import Content from "../Componets/ContentPage";
 import InputField from "../Componets/FromInput";
 import Button from "./Button";
-import {useState, useEffect, useReducer} from "react";
+import {useState} from "react";
 import ErrorMsg from "../Componets/Error";
 
 export default function CreateUserForm(){

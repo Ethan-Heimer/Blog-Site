@@ -4,7 +4,9 @@ const userSchema = new mongoose.Schema({
    Username: String,
    Email: String,
    Password: String,
-   UUID: String
+   UUID: String,
+
+   ProfilePicture: String
 },
 {
     collection: "Users"

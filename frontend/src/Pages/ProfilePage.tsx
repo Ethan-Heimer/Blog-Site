@@ -1,19 +1,19 @@
-import { useUserData } from "../App";
+import { useParams } from "react-router-dom";
 import BlogsDisplay from "../Componets/Blog/BlogsDisplay";
 import Header from "../Componets/Header";
 import ProfileDataDisplay from "../Componets/ProfileDataSection";
 
 export default function ProfilePage(){
-    const userData = useUserData();
+    const params = useParams();
     
     return(
         <div className="bgi-two min-h-100">
             <Header shadow={false}/>
 
-            <ProfileDataDisplay/>
+            <ProfileDataDisplay UUID={params.id as string}/>
 
             <p className="font-xlarge center m-1 text-shadow">User Blogs</p>
-            <BlogsDisplay FromUser={userData.UUID}/>
+            <BlogsDisplay FromUser={params.id}/>
         </div>
     )
 }
