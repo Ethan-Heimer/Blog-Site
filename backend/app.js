@@ -3,9 +3,9 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const {Server} = require("socket.io");
+const socketContoller = require("./routes/blog.sockets")
 
 require("dotenv").config();
-const blogController = require("./controllers/blogController");
 
 const app = express();
 
@@ -44,12 +44,7 @@ mongoose.connect(`mongodb+srv://Ethan:${process.env.PASSWORD}@database.iqvpvxu.m
 io.on("connection", (socket) => {
     console.log("new connection");
 
-    socket.on("post_comment",async (data) => {
-        console.log(data.BlogId);
-        await blogController.PostComment(data.BlogId, data.UserId, data.Comment);
-
-        io.sockets.emit("comment_posted_"+data.BlogId);
-    })
+    socketContoller.addComent(io, socket);
 })
 
 

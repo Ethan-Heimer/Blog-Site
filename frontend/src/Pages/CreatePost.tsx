@@ -9,12 +9,12 @@ export default function CreatePost(){
     const params = useParams()
    
     return(
-        <>
+        <div className="bgi-three min-h-100">
             <Header/>
 
             <BlogDataProvider blogId={params.id}>
                 <BlogEditor/>
             </BlogDataProvider>
-        </>
+        </div>
     )
 }

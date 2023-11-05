@@ -33,7 +33,7 @@ export default function BlogCard(props: TCardProps){
     return (
             <Content className="min-w-400 m-1 hover-pop shadow hover-underline m-down-5"
             header={
-                <p className="font-med center">{props.title}</p>
+                <p className="font-med center text-block-shadow">{props.title}</p>
             }
             content={
             <div>

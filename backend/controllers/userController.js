@@ -16,26 +16,29 @@ const Add = async (req, res) => {
 const SignIn = async (req, res) => {
     const [Username, Email, Password] = GetUserData(req.body)
 
+    console.log(Password);
+
     await userModel.findOne({Username: Username})
     .then(result => {
-        if(result != null && bcrypt.compare(Password, result.Password)){
-            res.json({
-                data: {
-                    UUID: result.UUID,
-                    Username: result.Username,
-                    ProfilePicture: result.ProfilePicture
-                },
-                message: 'Signed In Successfully',
-                statusCode: 200
-            })
-        }
-        else
-        {
-            res.json({
-                message: "Username or Password is Not Correct",
-                statusCode: 403
-            })
-        }
+        bcrypt.compare(Password, result.Password, (err, isMatch) => {
+            if(isMatch){
+                res.json({
+                    data: {
+                        UUID: result.UUID,
+                        Username: result.Username,
+                        ProfilePicture: result.ProfilePicture
+                    },
+                    message: 'Signed In Successfully',
+                    statusCode: 200
+                })
+            }
+            else{
+                res.json({
+                    message: "Username or Password is Not Correct",
+                    statusCode: 403
+                })
+            }
+        })
     })
     .catch(error => {
         res.json({

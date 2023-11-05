@@ -53,16 +53,16 @@ export default function CreateUserForm(){
 
         content={(
             <div className="center">
-                <form className="center" onSubmit={onSubmit}>
+                <form className="center">
                     <InputField lable="Username" onValueChanged={(e: string) => setUserName(e)}/>
                     <InputField lable="Email" onValueChanged={(e: string) => setEmail(e)} type="email"/>
                     <InputField lable="Password" onValueChanged={(e: string) => setPassword(e)} type="password"/>
                     <InputField lable="Confirm Password" onValueChanged={(e: string) => setConfirmPassword(e)} type="password"/>
-
-                    <Button onClick={() => {}}>
-                        <p className="font-med">Submit</p>
-                    </Button> 
                 </form>
+
+                <Button onClick={onSubmit}>
+                        <p className="font-med">Submit</p>
+                </Button> 
             </div>
         )}/>
 

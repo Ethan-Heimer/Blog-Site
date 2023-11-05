@@ -1,7 +1,7 @@
 :root {
   --bodycolor: #202C39;
 
-  --color-one: #000000;
+  --color-one: #000000b0;
   --color-two: #DA627D55;
   --color-three: #DA627D;
 
@@ -26,9 +26,9 @@
 
   --transition-speed: .1s;
 
-  --backgroundImageOne: url("./public/Background1.png");
-  --backgroundImageTwo: url("./public/Background5.png");
-  --backgroundImageThree: url("./public/Background6.png");
+  --backgroundImageOne: url("/Background1.png");
+  --backgroundImageTwo: url("/Background5.png");
+  --backgroundImageThree: url("/Background6.png");
 }
 
 *{
@@ -83,6 +83,16 @@ background-color: #ffffff22;
   left: 0;
 }
 
+.relative{
+  position: relative;
+}
+
+.absolute{
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
 a{
   text-decoration: none;
 }
@@ -98,6 +108,7 @@ button{
 
 .bgc-one{
   background-color: var(--color-one);
+  backdrop-filter: blur(10px);
 }
 
 .bgc-two{
@@ -248,7 +259,7 @@ button{
 }
 
 .min-w-400{
-  width: 350px;
+  width: 450px;
 }
 
 .min-h-100{
@@ -257,6 +268,14 @@ button{
 
 .w-20v{
   width: 20vw;
+}
+
+.w-80v{
+  width: 80vw;
+}
+
+.w-10{
+  width: 10%;
 }
 
 .w-20{
@@ -342,7 +361,7 @@ button{
 }
 
 .hover-tilt:hover{
-  rotate: 15deg;
+  rotate: 5deg;
 }
 
 .hover-pop{
@@ -454,7 +473,24 @@ button{
 }
 
 .img-fit{
-  object-fit: cover;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.stack{
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.underline{
+  border-bottom: solid var(--bodycolor) 1px;
+}
+
+.sticky{
+  position: sticky;
+  top: 0;
+
+  z-index: 20;
 }
 
 @media only screen and (min-width: 2000px){

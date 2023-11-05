@@ -37,7 +37,7 @@ export default function ProfileDataDisplay(props: TProfileDataProps){
     return(
         <div className="background-blur shadow-down pad-1">
             <div className = "row">
-                <ProfilePicture url={avatar} size={500}/>
+                <ProfilePicture url={avatar} size={"20vmax"}/>
                 
                 <div>
                     <p className='m-1 font-xlarge'>

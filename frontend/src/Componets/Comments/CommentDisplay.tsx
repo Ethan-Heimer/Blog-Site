@@ -37,10 +37,10 @@ export default function CommentDisplay(props: TSDData){
     }, [context.socket])
 
     return (
-        <>
+        <div className="center stack w-100">
             {comments.map(x => {
                 return <Comment UUID={x.PosterId} Comment={x.Message}/>
             })}
-        </>
+        </div>
     )
 }

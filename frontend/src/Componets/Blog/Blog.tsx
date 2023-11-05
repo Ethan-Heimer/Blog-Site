@@ -23,28 +23,34 @@ export default function Blog(props: TBlogProps){
 
     return (
         <>
-            <Content className="w-90 pad-1 blog" header={(
-            <div className="center-row">
+            <Content className="w-90 pad-1" header={(
+            <div className="center">
                 <div className="left">
-                    <ProfileWidget UUID={props.AuthorId} pictureSize={"3vmax"}/>
+               
                 </div>
                     <h1 className="center font-large text-block-shadow">{props.Header}</h1>
             </div>
             )}
 
             content={(
-                <div className="pad-1 m-1 m-inline-2">
+                <>
+                    <div>
+                        <ProfileWidget UUID={props.AuthorId} pictureSize={"3vmax"}/>
+                    </div>
                     
-                    <Markdown>
-                        {props.Content}
-                    </Markdown>
-                </div>
+                    <div className="pad-1 m-1 m-inline-2 blog underline">
+                        <Markdown>
+                            {props.Content}
+                        </Markdown>
+                    </div>
+
+                    <p className="font-xlarge m-1 center">Discussion</p>
+                    <CommentWritter blogId={props.BlogId} />
+                    <CommentDisplay BlogId={props.BlogId}/>
+                </>
             )}
             
             /> 
-
-          <CommentWritter blogId={props.BlogId} />
-          <CommentDisplay BlogId={props.BlogId}/>
         </>
     )
 }

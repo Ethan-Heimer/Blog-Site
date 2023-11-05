@@ -11,15 +11,15 @@ export default function BlogEditorDisplay(){
     return(
         <>
          <Content
-            width="w-90"
+         className="w-90"
              header={
                 <div className="center">
-                    <InputField required={true} className="font-large text-center" invisable={true} placeholder="Title" onValueChanged={(value: string) => data.EditHeader(value)} defaultValue={data.Header}/>
+                    <InputField required={true} className="font-large text-center w-80v" invisable={true} placeholder="Title" onValueChanged={(value: string) => data.EditHeader(value)} defaultValue={data.Header}/>
                 </div>
              }
              content={
                 <>
-                    <TextBox defaultValue={data.Content} onValueChanged={data.EditContent}/>
+                    <TextBox defaultHeight={"50vh"} defaultValue={data.Content} onValueChanged={data.EditContent}/>
                     <UploadFile label="Thumbnail" onUpload={(d) => data.SetThumbnail(d)}/>
                 </>
              }/>

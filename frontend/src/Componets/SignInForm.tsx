@@ -57,14 +57,15 @@ export default function SignInForm(){
 
             content={(
                 <div className="center">
-                    <form className="center" onSubmit={onSubmit}>
+                    <form className="center">
                         <InputField lable="Username" onValueChanged={(e: string) => setUserName(e)}/>
                         <InputField lable="Password" onValueChanged={(e: string) => setPassword(e)} type="password"/>
 
-                        <Button onClick={() => {}}>
-                            <p className="font-med">Submit</p>
-                        </Button> 
                     </form>
+                    
+                    <Button onClick={onSubmit}>
+                        <p className="font-med">Submit</p>
+                    </Button> 
                 </div>
             )}/>
 

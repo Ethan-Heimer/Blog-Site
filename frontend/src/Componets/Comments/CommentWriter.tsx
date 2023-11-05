@@ -20,12 +20,17 @@ export default function CommentWritter(props: TWritterData){
     }
     
     return(
-        <div className="w-90 bgc-one pad-1">
+        <>
+        {
+            userData.UUID != "" && 
+            (<div className="w-100 pad-1 underline">
             <ProfileWidget className="m-1" UUID={userData.UUID} pictureSize={"3vmax"}/>
-            <TextBox defaultHeight={"3vh"} placeHolder="Comment..." onValueChanged={setComment}/>
-            <Button className="m-1" onClick={post}>
+            <TextBox defaultHeight={"5vh"} placeHolder="Comment..." onValueChanged={setComment}/>
+            <Button className="m-1 font-med" onClick={post}>
                 Post!
             </Button>
-        </div>
+            </div>)
+        }
+        </>
     )
 }
