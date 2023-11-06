@@ -19,6 +19,8 @@ const io = new Server(server, {
 
 const PORT = process.env.PORT;
 
+console.log(process.env.EMAIL);
+
 const blogRouter = require("./routes/blogRoutes");
 const userRouter = require("./routes/userRoutes");
 
@@ -37,9 +39,6 @@ mongoose.connect(`mongodb+srv://Ethan:${process.env.PASSWORD}@database.iqvpvxu.m
 }).catch(error => {
     console.log("error in database: " + error);
 })
-
-//put in different file
-//clean up code
 
 io.on("connection", (socket) => {
     console.log("new connection");

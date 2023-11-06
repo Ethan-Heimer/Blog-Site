@@ -6,7 +6,12 @@ const userSchema = new mongoose.Schema({
    Password: String,
    UUID: String,
 
-   ProfilePicture: String
+   ProfilePicture: String,
+
+   Favorites: Array,
+   
+   Following: Array,
+   Followers: Array,
 },
 {
     collection: "Users"

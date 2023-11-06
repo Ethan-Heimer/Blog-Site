@@ -126,19 +126,19 @@ button{
 .bgi-one{
   background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), var(--backgroundImageOne);
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100vw;
 }
 
 .bgi-two{
   background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), var(--backgroundImageTwo);
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100vw;
 }
 
 .bgi-three{
   background: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ), var(--backgroundImageThree);
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: 100vw;
 }
 
 .bgc-invisable{
@@ -167,6 +167,10 @@ button{
 
 .font-color-two{
   color: var(--font-color-two)
+}
+
+.font-color-three{
+  color: var(--block-color)
 }
 
 .text-center{
@@ -229,7 +233,23 @@ button{
   margin-inline: 2.5vmax;
 }
 
+.up-1{
+  transform: translateY(-.7vmax);
+}
+
+.m-block-1{
+  margin-block: 1vmax;
+}
+
+.up-half{
+  transform: translate(-.5vmax);
+}
+
 .button{
+  transition: .1s;
+}
+
+.tab{
   transition: .1s;
 }
 
@@ -247,7 +267,28 @@ button{
   transform: translateY(.4vmax);
 }
 
-.block-color-three:hover{ 
+.block-color-three.button:hover{ 
+  background-color: var(--block-shadow-three);
+  box-shadow: none;
+
+  transform: translateY(.4vmax);
+}
+
+.block-color-one.tab.pressed{
+  background-color: var(--block-shadow);
+  box-shadow: none;
+
+  transform: translateY(.4vmax);
+}
+
+.block-color-two.tab.pressed{
+  background-color: var(--block-shadow-two);
+  box-shadow: none;
+
+  transform: translateY(.4vmax);
+}
+
+.block-color-three.tab.pressed{ 
   background-color: var(--block-shadow-three);
   box-shadow: none;
 
@@ -298,6 +339,10 @@ button{
   width: 100%;
 }
 
+.span-given{
+  flex-grow: 1;
+}
+
 .h-100{
   height: 100vh;
 }
@@ -346,6 +391,10 @@ button{
 
 .absolute{
   position: absolute;
+}
+
+.no-wrap{
+  text-wrap: nowrap;
 }
 
 .hover-scale{

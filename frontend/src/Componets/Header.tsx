@@ -4,6 +4,8 @@ import { useUserData } from "../App";
 import { useEffect } from "react";
 import ProfilePicture from "./Profile/ProfilePicture";
 import { useNavigate } from "react-router-dom";
+import Search from "./Search/Search";
+import SearchBox from "./Search/SearchBox";
 
 type THeaderProps = {
     shadow?: boolean;
@@ -26,18 +28,20 @@ export default function Header(props: THeaderProps){
                 
                 {userData.UUID == "" ? (
                     <>
-                        <Button onClick={() => {}}>
+                        <Button onClick={() => {}} className="m-inline-1">
                             <Link to="/user/create" className="font-med text-block-shadow">Get Started</Link>
                         </Button>
 
-                        <Button onClick={() => {}}>
+                        <Button onClick={() => {}} className="m-inline-1">
                             <Link to="/" className="font-med text-block-shadow">Log In!</Link>
                         </Button>
                     </>
                 ) : (
                     <>
-                        <Button onClick={() => {}}>
-                            <Link to="/blog/edit/" className="font-med text-block-shadow">Create Post!</Link>
+                        <SearchBox/>
+
+                        <Button onClick={() => {}} className="m-inline-1 row">
+                            <Link to="/blog/edit/" className="font-med text-block-shadow row no-wrap"><p>Create Post!</p></Link>
                         </Button>
 
                         <button className="hover-scale hover-tilt" onClick={() => Nav("/Profile/"+userData.UUID)}>

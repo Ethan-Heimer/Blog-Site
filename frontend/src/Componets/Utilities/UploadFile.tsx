@@ -25,9 +25,9 @@ export default function UploadFile(props: TUploadFileProps){
     }
 
     return(
-        <>
+        <div className="m-block-1">
             <label className="font-med m-inline-1">{props.label}</label>
             <input type="file" name="image" onChange={onValueChanged}></input>
-        </>
+        </div>
     )
 }

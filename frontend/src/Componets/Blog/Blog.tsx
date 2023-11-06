@@ -3,12 +3,10 @@ import { useNavigate } from "react-router-dom";
 import Content from "../Profile/ContentPage";
 import Markdown from "markdown-to-jsx";
 import ProfileWidget from "../Profile/ProfileWidget";
-import Comment from "../Comments/Comment";
-import Button from "../Utilities/Button";
+
 import CommentWritter from "../Comments/CommentWriter";
 import CommentDisplay from "../Comments/CommentDisplay";
-
-
+import FavoriteToggle from "../Favorites/FavoriteButton";
 
 type TBlogProps = {
     Header: string;
@@ -18,8 +16,6 @@ type TBlogProps = {
 }
 
 export default function Blog(props: TBlogProps){
-    //const Nav = useNavigate();
-    
 
     return (
         <>
@@ -34,8 +30,9 @@ export default function Blog(props: TBlogProps){
 
             content={(
                 <>
-                    <div>
+                    <div className="underline pad-1 row spread">
                         <ProfileWidget UUID={props.AuthorId} pictureSize={"3vmax"}/>
+                        <FavoriteToggle blogId={props.BlogId} authorId={props.AuthorId}/>
                     </div>
                     
                     <div className="pad-1 m-1 m-inline-2 blog underline">

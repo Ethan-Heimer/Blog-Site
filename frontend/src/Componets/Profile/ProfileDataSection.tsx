@@ -3,6 +3,9 @@ import { useUserData } from "../../App";
 import ProfilePicture from "./ProfilePicture";
 import UploadFile from "../Utilities/UploadFile";
 import { useNavigate } from "react-router-dom";
+import FollowButton from "./Follow";
+import Following from "./Following";
+import Followers from "./Followers";
 
 type TProfileDataProps = {
     UUID: string;
@@ -15,6 +18,8 @@ export default function ProfileDataDisplay(props: TProfileDataProps){
     
     const[username, setUsername] = useState("");
     const[avatar, setAvatar] = useState("");
+
+    const[incrementFollers, setIncrement] = useState(false);
     
     useEffect(() => {
         console.log("use effect");
@@ -32,7 +37,9 @@ export default function ProfileDataDisplay(props: TProfileDataProps){
         .catch(error => {
            console.log(error);
         })
-    }, [userData.ProfilePicture])
+
+        setIncrement(false);
+    }, [userData.ProfilePicture, props.UUID])
     
     return(
         <div className="background-blur shadow-down pad-1">
@@ -47,10 +54,14 @@ export default function ProfileDataDisplay(props: TProfileDataProps){
                     <p className="m-1 font-med font-color-two">
                         #{props.UUID}
                     </p>
+
+                    <Following UUID={props.UUID}/>
+                    <Followers increment={incrementFollers} UUID={props.UUID}/>
+                    {(userData.UUID == props.UUID) ? <UploadFile label="Upload Avatar" onUpload={userData.UpdateProfilePicture}/> : <FollowButton onClick={(following) => setIncrement(!following)} profileUUID={props.UUID}/>}
                 </div>
             </div>
             
-            {(userData.UUID == props.UUID) && <UploadFile label="Upload Avatar" onUpload={userData.UpdateProfilePicture}/>}
+           
         </div>
     )
 }

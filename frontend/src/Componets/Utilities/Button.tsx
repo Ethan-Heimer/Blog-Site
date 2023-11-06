@@ -23,7 +23,7 @@ export default function Button(props: TButtonProps){
         buttonColor = "block-color-one"
 
     return(
-        <button className={"block m-inline-1 button " + props.className + ` ${buttonColor}`} onClick={(e) => props.onClick(e)}>
+        <button className={"block button " + props.className + ` ${buttonColor}`} onClick={(e) => props.onClick(e)}>
             {props.children}
         </button>
     )

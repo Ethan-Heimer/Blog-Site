@@ -8,6 +8,8 @@ import CreatePost from './Pages/CreatePost'
 import ProfilePage from './Pages/ProfilePage'
 import BlogPage from './Pages/BlogPage'
 import SocketIOProvider from './Componets/SockeIOProvider'
+import UserPage from './Pages/UserPage'
+import { DisplayType } from './Componets/Profile/UserDisplay'
 
 
 type TUserData = {
@@ -86,10 +88,13 @@ function App() {
         <Routes>
           <Route path='/' element={<SignIn/>} />
           <Route path='/user/create' element={<CreateUser/>}/>
-          <Route path="/home" element={<HomePage/>} />
+          <Route path="/home/:search?" element={<HomePage/>} />
           <Route path="/blog/edit/:id?" element={<CreatePost />} />
           <Route path="/profile/:id" element={<ProfilePage/>}/>
           <Route path="/blog/display/:id" element={<BlogPage/>} />
+          <Route path="/users/search/:input?" element={<UserPage pageState={DisplayType.BySearch}/>} />
+          <Route path="/users/following/:input?" element={<UserPage pageState={DisplayType.ByFollowing}/>} />
+          <Route path="/users/followers/:input?" element={<UserPage pageState={DisplayType.ByFollowers}/>} />
         </Routes>
       </BrowserRouter>
       </SocketIOProvider>
