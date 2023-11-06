@@ -20,6 +20,7 @@ const io = new Server(server, {
 const PORT = process.env.PORT;
 
 console.log(process.env.EMAIL);
+console.log
 
 const blogRouter = require("./routes/blogRoutes");
 const userRouter = require("./routes/userRoutes");
