@@ -6,7 +6,9 @@ const blogSchema = new mongoose.Schema({
     UserId: String,
 
     ThumbnailURL: String,
-    Comments: Array
+    Comments: Array,
+
+    _id: {type: Number, required: true}
 },
 {
     collection: "Blog"

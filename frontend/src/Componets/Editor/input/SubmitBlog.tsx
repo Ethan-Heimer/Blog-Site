@@ -28,7 +28,8 @@ export default function SubmitBlog(){
             Header: context.Header,
             Content: context.Content,
             UserId: userData.UUID,
-            ThumbnailURL: context.Thumbnail
+            ThumbnailURL: context.Thumbnail,
+            _id: context.BUID
         }  
 
         console.log(body);

@@ -242,31 +242,18 @@ const addFollowing = async(req, res) => {
     const followingUUID = req.body.followingUUID;
 
     await userModel.findOne({UUID: followingUUID}).then(async (result) => {
-        const followers = result.Followers;
-        followers.push(uuid);
-
-        await userModel.findOneAndUpdate({UUID : followingUUID}, {Followers: followers}).catch(error => console.log(error));
+        result.Followers.push(uuid);
+        result.save();
     })
 
     await userModel.findOne({UUID: uuid}).then( async (result) => {
-        console.log(result.Following);
-        
-        const following = result.Following;
-        following.push(followingUUID);
+        result.Following.push(followingUUID);
+        result.save();
 
-        await userModel.findOneAndUpdate({UUID : uuid}, {Following: following}).then(
-            res.json({
-                message: "follow added",
-                status: 200
-            })
-        ).catch(error => {
-            console.log(error)
-            res.json({
-                message: "follow Failed To Add",
-                error: error.message,
-                status: 500
-            })
-        }) 
+        res.json({
+            message: "follow added",
+            status: 200
+        })
     }).catch(error => {
         console.log(error)
         res.json({
@@ -282,32 +269,21 @@ const removeFollow = async(req, res) => {
     const followingUUID = req.body.followingUUID;
 
     await userModel.findOne({UUID: followingUUID}).then(async (result) => {
-        const followers= result.Following;
-        const id = followers.indexOf(followingUUID);
+        const id = result.Followers.indexOf(followingUUID);
 
-        followers.splice(id, 1);
-
-        await userModel.findOneAndUpdate({UUID : followingUUID}, {Followers: followers}).catch(error => console.log(error));
+        result.Followers.splice(id, 1);
+        result.save();
     })
 
     await userModel.findOne({UUID: uuid}).then( async (result) => {
-        const following= result.Following;
-        const id = following.indexOf(followingUUID);
+        const id = result.Following.indexOf(followingUUID);
 
-        following.splice(id, 1);
+        result.Following.splice(id, 1);
+        result.save();
 
-        await userModel.findOneAndUpdate({UUID : uuid}, {Following: following}).then(
-            res.json({
-                message: "Removed",
-                status: 200
-            })
-        ).catch(error => {
-            console.log(error)
-            res.json({
-                message: "Favorite Failed To Remove",
-                error: error.message,
-                status: 500
-            })
+        res.json({
+            message: "Removed",
+            status: 200
         })
     }).catch(error => {
         console.log(error)
@@ -323,11 +299,8 @@ const isFollowing = async(req, res) => {
     const uuid = req.params.id; 
     const followingUUID = req.params.followingId;
 
-    console.log(uuid, followingUUID);
-
-    await userModel.findOne({UUID: uuid}).then(resault => {
-        const has = resault.Following.includes(followingUUID);
-        console.log(has);
+    userModel.find({Following: followingUUID}).then(result => {
+        let has = result.some(x => x.UUID == uuid); 
 
         res.json({
             data: has,
@@ -344,33 +317,20 @@ const isFollowing = async(req, res) => {
             status: 404
         })
     })
+
 }
 
 const getFollowing = async(req, res) => {
     const id = req.params.id
-    
-    await userModel.findOne({UUID: id}).then( async (result) => {
-        let following = [];
 
-        for(var i = 0; i < result.Following.length; i++){
-            await userModel.findOne({UUID: result.Following[i]}).then(result => {
-                if(result != null){
-                    following.push(result.UUID);
-                }
-            }).catch(error => {
-                console.log("failed to fetch following");
-            })
+    await userModel.find({Followers: id}).then(result => {
+        const following = result.map(x => x.UUID);
 
-            if(i == result.Following.length-1){
-                console.log(following, "folllowing");
-
-                res.json({
-                    data: following,
-                    message: "following",
-                    status: 200
-                })
-            }
-        }
+        res.json({
+            data: following,
+            message: "following",
+            status: 200
+        })
     })
     .catch(error => {
         res.json({
@@ -383,29 +343,15 @@ const getFollowing = async(req, res) => {
 
 const getFollowers = async(req, res) => {
     const id = req.params.id
-    
-    await userModel.findOne({UUID: id}).then( async (result) => {
-        let followers = [];
 
-        for(var i = 0; i < result.Followers.length; i++){
-            await userModel.findOne({UUID: result.Followers[i]}).then(result => {
-                if(result != null){
-                    followers.push(result.UUID);
-                }
-            }).catch(error => {
-                console.log("failed to fetch following");
-            })
+    await userModel.find({Following: id}).then(result => {
+        const following = result.map(x => x.UUID);
 
-            if(i == result.Followers.length-1){
-                console.log(followers, "folllowing");
-
-                res.json({
-                    data: followers,
-                    message: "following",
-                    status: 200
-                })
-            }
-        }
+        res.json({
+            data: following,
+            message: "following",
+            status: 200
+        })
     })
     .catch(error => {
         res.json({

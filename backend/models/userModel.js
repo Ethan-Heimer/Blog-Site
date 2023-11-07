@@ -12,6 +12,8 @@ const userSchema = new mongoose.Schema({
    
    Following: Array,
    Followers: Array,
+
+   _id: Number
 },
 {
     collection: "Users"

@@ -40,7 +40,7 @@ type TBlogDataProps = {
 export default function BlogDataProvider(props: TBlogDataProps){
     const[header, setHeader] = useState("");
     const[content, setContent] = useState("");
-    const[buid, setBUID] = useState("");
+    const[buid, setBUID] = useState(new Date().getTime().toString());
     const[thumbnail, setThumbnail] = useState("");
 
     useEffect(() => {
@@ -59,7 +59,6 @@ export default function BlogDataProvider(props: TBlogDataProps){
         })
         .catch(error => {
             console.warn('Error', error);
-            setBUID(new Date().getTime().toString());
         })
     }, [])
 
