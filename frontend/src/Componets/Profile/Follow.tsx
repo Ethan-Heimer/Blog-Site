@@ -1,4 +1,5 @@
 import { useUserData } from "../../App";
+import { useSocketIO } from "../SockeIOProvider";
 import Button, { ButtopnType } from "../Utilities/Button";
 import {useState, useEffect} from "react";
 
@@ -11,6 +12,8 @@ type TFollowButtonProps = {
 export default function FollowButton(props: TFollowButtonProps){
     const[following, setFollowing] = useState(false)
     const userData = useUserData();
+
+    const context = useSocketIO();
 
     useEffect(() => {
         if(userData.UUID == '')
@@ -29,6 +32,7 @@ export default function FollowButton(props: TFollowButtonProps){
          .catch(error => {
              console.log(error);
          })
+         
      }, [])
 
      const toggle = () => {
@@ -41,43 +45,11 @@ export default function FollowButton(props: TFollowButtonProps){
     }
 
     const add = async () => {
-        await fetch("http://localhost:3000/user/following/add/"+userData.UUID, {
-            method:"POST",
-            headers:{
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                followingUUID: props.profileUUID
-            }),
-        }).then(resault => resault.json())
-        .then(result => {
-            if(result.status != 200){
-                console.log(result.error);
-            }
-            else{
-                console.log(result.message);
-            }
-        })
+        context.socket.emit("add_follow", {UUID: userData.UUID, followingUUID: props.profileUUID})
     }
 
     const remove = async () => {
-        await fetch("http://localhost:3000/user/following/remove/"+userData.UUID, {
-            method:"POST",
-            headers:{
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-               followingUUID: props.profileUUID
-            }),
-        }).then(resault => resault.json())
-        .then(result => {
-            if(result.status != 200){
-                console.log(result.error);
-            }
-            else{
-                console.log(result.message);
-            }
-        })
+        context.socket.emit("remove_follow", {UUID: userData.UUID, followingUUID: props.profileUUID})
     }   
     
     return(

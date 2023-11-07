@@ -3,7 +3,9 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const {Server} = require("socket.io");
-const socketContoller = require("./routes/blog.sockets")
+
+const blogContoller = require("./routes/blog.sockets")
+const userContorller = require("./routes/user.socket");
 
 require("dotenv").config();
 
@@ -44,7 +46,10 @@ mongoose.connect(`mongodb+srv://Ethan:${process.env.PASSWORD}@database.iqvpvxu.m
 io.on("connection", (socket) => {
     console.log("new connection");
 
-    socketContoller.addComent(io, socket);
+    blogContoller.addComent(io, socket);
+
+    userContorller.addFollowing(io, socket);
+    userContorller.removeFollowing(io, socket);
 })
 
 

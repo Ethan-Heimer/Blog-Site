@@ -404,6 +404,8 @@ const getFollowerCount = async (req, res) => {
     })
 }
 
+
+
 function GetUserData(data){
     return [data.Username, data.Email, data.Password];
 }

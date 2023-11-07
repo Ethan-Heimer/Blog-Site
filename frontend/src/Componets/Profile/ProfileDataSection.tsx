@@ -13,13 +13,9 @@ type TProfileDataProps = {
 
 export default function ProfileDataDisplay(props: TProfileDataProps){
     const userData = useUserData();
-
-    const Nav = useNavigate()
     
     const[username, setUsername] = useState("");
     const[avatar, setAvatar] = useState("");
-
-    const[incrementFollers, setIncrement] = useState(false);
     
     useEffect(() => {
         console.log("use effect");
@@ -38,7 +34,6 @@ export default function ProfileDataDisplay(props: TProfileDataProps){
            console.log(error);
         })
 
-        setIncrement(false);
     }, [userData.ProfilePicture, props.UUID])
     
     return(
@@ -56,8 +51,8 @@ export default function ProfileDataDisplay(props: TProfileDataProps){
                     </p>
 
                     <Following UUID={props.UUID}/>
-                    <Followers increment={incrementFollers} UUID={props.UUID}/>
-                    {(userData.UUID == props.UUID) ? <UploadFile label="Upload Avatar" onUpload={userData.UpdateProfilePicture}/> : <FollowButton onClick={(following) => setIncrement(!following)} profileUUID={props.UUID}/>}
+                    <Followers UUID={props.UUID}/>
+                    {(userData.UUID == props.UUID) ? <UploadFile label="Upload Avatar" onUpload={userData.UpdateProfilePicture}/> : <FollowButton onClick={() => {}} profileUUID={props.UUID}/>}
                 </div>
             </div>
             
