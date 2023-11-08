@@ -61,13 +61,26 @@ We.io aims to keep people connected. follow your favorite people and get updated
 <details>
 <summary>
   
-  ## Delete Blog
+  ## Add/Edit Blog
   
 </summary>
 
-- **Method**: DELETE
+- **Method**: Patch
 - **Params**: `:id`
-- **Route**: `/blog/delete/:id`
+- **Route**: `/blog/append/:id`
+  
+</details>
+
+<details>
+<summary>
+  
+  ## Get by Title
+  
+</summary>
+
+- **Method**: Get
+- **Params**: `:keyword`
+- **Route**: `/blog/append/:keyword?`
   
 </details>
 
