@@ -8,7 +8,8 @@ We.io aims to keep people connected. follow your favorite people and get updated
 # Blog Requests: (/blog)
 <details>
 <summary>Get</summary>
-- **Method**: GET
-- **Route**: `/search?query=input`
+Method: get
+Params: id
+Route: /blog/get/:id
 </details>
 
