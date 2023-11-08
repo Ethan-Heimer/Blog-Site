@@ -4,3 +4,11 @@ We.io aims to keep people connected. follow your favorite people and get updated
 
 # API
 ## Web.io has an extensive backend, allowing for third-party access.
+
+# Blog Requests: (/blog)
+<details>
+<summary>Get</summary>
+### Get Blog
+- method: get
+- params: id
+
