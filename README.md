@@ -33,5 +33,41 @@ We.io aims to keep people connected. follow your favorite people and get updated
 </details>
 
 <details>
-<summary>POST Requests</summary>
+<summary>
+  
+  ## Get All by User
+  
+</summary>
+
+- **Method**: GET
+- **Params**: `:userid`
+- **Route**: `/blog/getAll:id`
+  
+</details>
+
+<details>
+<summary>
+  
+  ## Delete Blog
+  
+</summary>
+
+- **Method**: DELETE
+- **Params**: `:id`
+- **Route**: `/blog/delete/:id`
+  
+</details>
+
+<details>
+<summary>
+  
+  ## Delete Blog
+  
+</summary>
+
+- **Method**: DELETE
+- **Params**: `:id`
+- **Route**: `/blog/delete/:id`
+  
+</details>
 
