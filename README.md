@@ -162,3 +162,31 @@ We.io aims to keep people connected. follow your favorite people and get updated
   
 </details>
 
+<details>
+<summary>
+  
+  ## Get Follower Count
+  
+</summary>
+
+- **Method**: Get
+- **Prams**: `id`
+- **Route**: `/user/follower/count/:id`
+  
+</details>
+
+<details>
+<summary>
+  
+  ## Get Following Count
+  
+</summary>
+
+- **Method**: Get
+- **Prams**: `id`
+- **Route**: `/user/following/count/:id`
+  
+</details>
+
+
+
