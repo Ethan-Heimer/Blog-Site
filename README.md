@@ -21,5 +21,17 @@ We.io aims to keep people connected. follow your favorite people and get updated
 </details>
 
 <details>
+<summary>
+  
+  ## Get All Blogs
+  
+</summary>
+
+- **Method**: GET
+- **Route**: `/blog/getAll/`
+  
+</details>
+
+<details>
 <summary>POST Requests</summary>
 
