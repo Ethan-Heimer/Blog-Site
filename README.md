@@ -6,11 +6,26 @@ We.io aims to keep people connected. follow your favorite people and get updated
 ## Web.io has an extensive backend, allowing for third-party access.
 
 # Blog Requests: (/blog)
+
 <details>
-<summary>Get</summary>
-### Get Blog
+<summary>GET Requests</summary>
 
-- **Method**: 'Get'
+### Get All Posts
 
+- **Method**: GET
+- **Route**: `/`
+
+### Search All Posts
+
+- **Method**: GET
+- **Route**: `/search?query=input`
+
+### Get Post
+
+- **Method**: GET
+- **Route**: `/get-post/:id`
 </details>
+
+<details>
+<summary>POST Requests</summary>
 
