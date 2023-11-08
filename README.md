@@ -9,11 +9,14 @@ We.io aims to keep people connected. follow your favorite people and get updated
 
 <details>
 <summary>
+  
   ## Get Blog
+  
 </summary>
 
 - **Method**: GET
-- **Route**: `/`
+- **Params**: ':id'
+- **Route**: `/blog/get/:id`
   
 </details>
 
