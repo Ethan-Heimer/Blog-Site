@@ -9,6 +9,6 @@ We.io aims to keep people connected. follow your favorite people and get updated
 <details>
 <summary>Get</summary>
 ### Get Blog
-- method: get
-- params: id
+- **method**: get
+- **params**: id
 
