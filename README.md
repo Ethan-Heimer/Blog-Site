@@ -15,7 +15,7 @@ We.io aims to keep people connected. follow your favorite people and get updated
 </summary>
 
 - **Method**: GET
-- **Params**: ':id'
+- **Params**: `:id`
 - **Route**: `/blog/get/:id`
   
 </details>
