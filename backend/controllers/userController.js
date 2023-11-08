@@ -89,66 +89,28 @@ const addFavorite = async(req, res) => {
     const uuid = req.params.id; 
     const blogId = req.body.blogId;
 
-    await userModel.findOne({UUID: uuid}).then( async (result) => {
-        console.log(result.Favorites);
-        
-        const favorites = result.Favorites;
-        favorites.push(blogId);
-        await userModel.findOneAndUpdate({UUID : uuid}, {Favorites: favorites}).then(
-            res.json({
-                message: "favorite added",
-                status: 200
-            })
-        ).catch(error => {
-            console.log(error)
-            res.json({
-                message: "Favorite Failed To Add",
-                error: error.message,
-                status: 500
-            })
-        })
-        .catch(error => {
-            console.log(error)
-            res.json({
-                message: "User not found",
-                error: error.message,
-                status: 404
-            })
-        })
-    })
-}
-
-const removeFavorite = async(req, res) => {
-    const uuid = req.params.id; 
-    const blogId = req.body.blogId;
-
-    await userModel.findOne({UUID: uuid}).then( async (result) => {
-        const favorites = result.Favorites;
-        const id = favorites.indexOf(blogId);
-
-        favorites.splice(id, 1);
-
-        await userModel.findOneAndUpdate({UUID : uuid}, {Favorites: favorites}).then(
-            res.json({
-                message: "Removed",
-                status: 200
-            })
-        ).catch(error => {
-            console.log(error)
-            res.json({
-                message: "Favorite Failed To Remove",
-                error: error.message,
-                status: 500
-            })
-        })
-    }).catch(error => {
+    await userModel.findOneAndUpdate({UUID: uuid}, {$push: {Favorites: blogId}}).catch(error => {
         console.log(error)
         res.json({
             message: "User not found",
             error: error.message,
             status: 404
         })
-    })
+    });
+}
+
+const removeFavorite = async(req, res) => {
+    const uuid = req.params.id; 
+    const blogId = req.body.blogId;
+
+    await userModel.findOneAndUpdate({UUID: uuid}, {$pull: {Favorites: blogId}}).catch(error => {
+        console.log(error)
+        res.json({
+            message: "User not found",
+            error: error.message,
+            status: 404
+        })
+    });
 }
 
 const hasFavorite = async(req, res) => {
@@ -232,64 +194,6 @@ const getUsersByKeyWords = async(req, res) => {
         res.json({
             error: error.message,
             message: "error occured",
-            status: 404
-        })
-    })
-}
-
-const addFollowing = async(req, res) => {
-    const uuid = req.params.id; 
-    const followingUUID = req.body.followingUUID;
-
-    await userModel.findOne({UUID: followingUUID}).then(async (result) => {
-        result.Followers.push(uuid);
-        result.save();
-    })
-
-    await userModel.findOne({UUID: uuid}).then( async (result) => {
-        result.Following.push(followingUUID);
-        result.save();
-
-        res.json({
-            message: "follow added",
-            status: 200
-        })
-    }).catch(error => {
-        console.log(error)
-        res.json({
-            message: "User not found",
-            error: error.message,
-            status: 404
-        })
-    })
-}
-
-const removeFollow = async(req, res) => {
-    const uuid = req.params.id; 
-    const followingUUID = req.body.followingUUID;
-
-    await userModel.findOne({UUID: followingUUID}).then(async (result) => {
-        const id = result.Followers.indexOf(followingUUID);
-
-        result.Followers.splice(id, 1);
-        result.save();
-    })
-
-    await userModel.findOne({UUID: uuid}).then( async (result) => {
-        const id = result.Following.indexOf(followingUUID);
-
-        result.Following.splice(id, 1);
-        result.save();
-
-        res.json({
-            message: "Removed",
-            status: 200
-        })
-    }).catch(error => {
-        console.log(error)
-        res.json({
-            message: "User not found",
-            error: error.message,
             status: 404
         })
     })
@@ -421,8 +325,6 @@ module.exports = {
     hasFavorite,
     getFavorites,
     getUsersByKeyWords,
-    addFollowing,
-    removeFollow,
     isFollowing,
     getFollowing,
     getFollowingCount,

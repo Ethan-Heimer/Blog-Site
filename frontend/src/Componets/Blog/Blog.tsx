@@ -7,6 +7,9 @@ import ProfileWidget from "../Profile/ProfileWidget";
 import CommentWritter from "../Comments/CommentWriter";
 import CommentDisplay from "../Comments/CommentDisplay";
 import FavoriteToggle from "../Favorites/FavoriteButton";
+import UserTypingDisplay from "../Comments/UserTypingDisplay";
+import { useEffect, useState } from "react";
+import { useSocketIO } from "../SockeIOProvider";
 
 type TBlogProps = {
     Header: string;
@@ -16,6 +19,16 @@ type TBlogProps = {
 }
 
 export default function Blog(props: TBlogProps){
+    const context = useSocketIO();
+    const[joined, setJoined] = useState(false);
+    
+    useEffect(() => {
+        if(!joined)
+        {
+            context.socket.emit("join_blog", {blogId: props.BlogId})
+            setJoined(true);
+        }
+    }, [context.socket, props.BlogId])
 
     return (
         <>
@@ -43,6 +56,7 @@ export default function Blog(props: TBlogProps){
 
                     <p className="font-xlarge m-1 center">Discussion</p>
                     <CommentWritter blogId={props.BlogId} />
+                    <UserTypingDisplay blogId={props.BlogId}/>
                     <CommentDisplay BlogId={props.BlogId}/>
                 </>
             )}

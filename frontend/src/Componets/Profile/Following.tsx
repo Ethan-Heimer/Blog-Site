@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSocketIO } from "../SockeIOProvider";
 
 type TFollowingProps = {
     UUID: string;
 }
 
 export default function Following(props: TFollowingProps){
-    const Nav = useNavigate()
+    const Nav = useNavigate();
+    const context = useSocketIO();
 
     const[count, setCount] = useState("0");
 
@@ -17,6 +19,11 @@ export default function Following(props: TFollowingProps){
             console.log(result.data);
             setCount(result.data);
         })
+
+        context.socket.on("following_updated_"+props.UUID, (data: any) => {
+            console.log(data.Count);
+            setCount(data.Count);
+       })
     }, [props.UUID])
 
     return (

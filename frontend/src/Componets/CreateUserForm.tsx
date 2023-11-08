@@ -15,13 +15,6 @@ export default function CreateUserForm(){
 
     const onSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-
-        if(password != confirmPassword)
-        {
-            console.log(error);
-            setError("Passwords do not match");
-            return;
-        }
     
         await fetch("http://localHost:3000/user/signup", {
             method:"POST",
@@ -39,7 +32,7 @@ export default function CreateUserForm(){
             window.location.href = "/";
         })
         .catch(error => {
-           console.log(error);
+            setError(error);
         })
     }
 
@@ -60,9 +53,13 @@ export default function CreateUserForm(){
                     <InputField lable="Confirm Password" onValueChanged={(e: string) => setConfirmPassword(e)} type="password"/>
                 </form>
 
-                <Button onClick={onSubmit}>
+                {
+                    (username.length > 3 && password.length > 3 && password == confirmPassword) &&
+                    <Button onClick={onSubmit}>
                         <p className="font-med">Submit</p>
-                </Button> 
+                    </Button> 
+                }
+               
             </div>
         )}/>
 

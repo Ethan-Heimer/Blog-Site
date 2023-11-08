@@ -30,7 +30,7 @@ export default function CommentDisplay(props: TSDData){
 
         fetchData();
         
-        context.socket.on("comment_posted_"+props.BlogId, async () => {
+        context.socket.on("comment_posted", async () => {
             await fetchData();
             console.log(comments);
         })  

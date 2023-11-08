@@ -18,9 +18,6 @@ router.get("/favorite/get/:id", userController.getFavorites);
 
 router.get("/getbysearch/:keyword?", userController.getUsersByKeyWords);
 
-router.post("/following/add/:id", userController.addFollowing);
-router.post("/following/remove/:id", userController.removeFollow);
-
 router.get("/following/:id/is/:followingId", userController.isFollowing);
 router.get("/following/get/:id", userController.getFollowing);
 router.get("/following/count/:id", userController.getFollowingCount);

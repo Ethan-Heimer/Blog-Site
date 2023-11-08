@@ -47,9 +47,14 @@ io.on("connection", (socket) => {
     console.log("new connection");
 
     blogContoller.addComent(io, socket);
+    blogContoller.showTyping(io, socket);
+    blogContoller.removeTyping(io, socket);
+    blogContoller.join(io, socket);
 
     userContorller.addFollowing(io, socket);
     userContorller.removeFollowing(io, socket);
+
+   
 })
 
 
