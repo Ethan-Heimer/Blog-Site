@@ -84,3 +84,81 @@ We.io aims to keep people connected. follow your favorite people and get updated
   
 </details>
 
+# User Requests: (/user)
+
+<details>
+<summary>
+  
+  ## Signup
+  
+</summary>
+
+- **Method**: POST
+- **Route**: `/user/signup`
+  
+</details>
+
+<details>
+<summary>
+  
+  ## Signin
+  
+</summary>
+
+- **Method**: POST
+- **Route**: `/user/signin`
+  
+</details>
+
+<details>
+<summary>
+  
+  ## Get User
+  
+</summary>
+
+- **Method**: Get
+- **params**: `id`
+- **Route**: `/user/get/:id`
+  
+</details>
+
+<details>
+<summary>
+  
+  ## Update User Data
+  
+</summary>
+
+- **Method**: POST
+- **Prams**: `id`
+- **Route**: `/user/update/:id`
+  
+</details>
+
+<details>
+<summary>
+  
+  ## Add Favorite
+  
+</summary>
+
+- **Method**: POST
+- **Prams**: `id`
+- **Route**: `/user/favorite/add/:id`
+  
+</details>
+
+<details>
+<summary>
+  
+  ## Remove Favorite
+  
+</summary>
+
+- **Method**: POST
+- **Prams**: `id`
+- **Route**: `/user/favorite/remove/:id`
+  
+</details>
+
