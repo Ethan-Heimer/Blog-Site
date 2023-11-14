@@ -1,5 +1,5 @@
 import * as io from "socket.io-client";
-import {  useState, useContext, createContext, useMemo } from 'react';
+import { useContext, createContext, useMemo } from 'react';
 
 type SocketContext = {
     socket: any;

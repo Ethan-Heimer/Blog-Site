@@ -13,7 +13,7 @@ export default function Followers(props: TFollowingProps){
     const[count, setCount] = useState("0");
 
     useEffect(() => {
-        fetch("http://localhost:3000/user/followers/count/"+props.UUID)
+        fetch("https://web-io-p635.onrender.com/user/followers/count/"+props.UUID)
         .then(result => result.json())
         .then(result => {
             console.log(result.data);

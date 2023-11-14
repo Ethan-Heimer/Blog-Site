@@ -15,7 +15,7 @@ export default function CommentWritter(props: TWritterData){
     
     const[comment, setComment] = useState('');
 
-    const onChange = (value) => {
+    const onChange = (value: any) => {
         setComment(value);
 
         //i dont want the type notif to emtit everytime someone types, so ill do it every 10 characters

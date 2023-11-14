@@ -1,8 +1,5 @@
-import {useEffect, useMemo, useState} from 'react';
-import Blog from './Blog';
-
+import {useEffect, useState} from 'react';
 import { useUserData } from '../../App';
-import { TBlogData } from '../Editor/BlogDataProvider';
 import BlogCard from './BlogCard';
 
 type TBlogsDisplayProps = {

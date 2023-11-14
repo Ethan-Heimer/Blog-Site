@@ -1,7 +1,5 @@
-import { useState} from "react";
+
 import {useBlogData } from "../Editor/BlogDataProvider";
-import InputField from "./FromInput";
-import { placeholder } from "@cloudinary/react";
 
 type TTextBoxData = {
     defaultValue?: string

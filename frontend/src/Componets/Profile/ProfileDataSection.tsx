@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useUserData } from "../../App";
 import ProfilePicture from "./ProfilePicture";
 import UploadFile from "../Utilities/UploadFile";
-import { useNavigate } from "react-router-dom";
 import FollowButton from "./Follow";
 import Following from "./Following";
 import Followers from "./Followers";

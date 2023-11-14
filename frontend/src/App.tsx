@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, json} from 'react-router-dom'
+import { BrowserRouter, Routes, Route} from 'react-router-dom'
 import SignIn from './Pages/SignIn'
 import CreateUser from './Pages/CreateUser'
 import HomePage from './Pages/HomePage'
@@ -50,7 +50,7 @@ function UserIdProvider(props: TContextProps){
   const setAvatar = async (url: string) => {
     console.log(url);  
     
-    await fetch("http://localhost:3000/user/update/"+uuid, {
+    await fetch("https://web-io-p635.onrender.com/user/update/"+uuid, {
         method: "post",
         body: JSON.stringify({
           Username: username,

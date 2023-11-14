@@ -21,7 +21,7 @@ export default function UserTypingDisplay(props: TDisplayData){
             console.log("hello");
         })
 
-        context.socket.on("remove_typer", (data: any) => {
+        context.socket.on("remove_typer", () => {
             setDisplay("");
             console.log("hello hi");
         })

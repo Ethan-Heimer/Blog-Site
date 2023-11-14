@@ -16,7 +16,7 @@ export default function SubmitBlog(){
     const Nav = useNavigate();
     console.log(context.BUID, "BUID");
 
-    let display = useMemo(() => {
+    const display = useMemo(() => {
         console.log(context.Thumbnail)
         return context.Header != '' && context.Thumbnail != '';
     }, [context])
@@ -40,7 +40,7 @@ export default function SubmitBlog(){
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(body),
-        }).then(response => {
+        }).then(() => {
             Nav("/home");
         }).catch((error) => {
             console.log(error);

@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 
 import Content from "../Profile/ContentPage";
 import Markdown from "markdown-to-jsx";

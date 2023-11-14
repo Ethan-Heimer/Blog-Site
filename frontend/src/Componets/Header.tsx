@@ -1,10 +1,8 @@
 import { Link } from "react-router-dom";
 import Button from "./Utilities/Button";
 import { useUserData } from "../App";
-import { useEffect } from "react";
 import ProfilePicture from "./Profile/ProfilePicture";
 import { useNavigate } from "react-router-dom";
-import Search from "./Search/Search";
 import SearchBox from "./Search/SearchBox";
 
 type THeaderProps = {

@@ -1,7 +1,6 @@
-import { useEffect, useMemo, useState, useRef } from "react";
+import { useEffect, useState} from "react";
 import { useSocketIO } from "../SockeIOProvider";
 import Comment from "./Comment";
-import { Socket } from "socket.io-client";
 
 type TSDData = {
     BlogId: string;
