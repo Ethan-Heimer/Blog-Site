@@ -230,6 +230,8 @@ const getFollowing = async(req, res) => {
     await userModel.find({Followers: id}).then(result => {
         const following = result.map(x => x.UUID);
 
+        console.log(result, "followers");
+
         res.json({
             data: following,
             message: "following",
@@ -248,9 +250,11 @@ const getFollowing = async(req, res) => {
 const getFollowers = async(req, res) => {
     const id = req.params.id
 
+   
+
     await userModel.find({Following: id}).then(result => {
         const following = result.map(x => x.UUID);
-
+        console.log(result, "following");
         res.json({
             data: following,
             message: "following",
