@@ -34,7 +34,7 @@ export default function SubmitBlog(){
 
         console.log(body);
         
-        await fetch("http://localHost:3000/blog/append/"+context.BUID, {
+        await fetch("https://web-io-p635.onrender.com/blog/append/"+context.BUID, {
             method:"PATCH",
             headers:{
                 "Content-Type": "application/json"

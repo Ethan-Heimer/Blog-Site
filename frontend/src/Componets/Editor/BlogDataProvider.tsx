@@ -44,7 +44,7 @@ export default function BlogDataProvider(props: TBlogDataProps){
     const[thumbnail, setThumbnail] = useState("");
 
     useEffect(() => {
-        fetch("http://localhost:3000/blog/get/"+props.blogId)
+        fetch("https://web-io-p635.onrender.com/blog/get/"+props.blogId)
         .then(res => res.json())
         .then(res => { 
             if(res.status == 200){

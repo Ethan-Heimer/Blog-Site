@@ -11,7 +11,7 @@ export default function FavoriteToggle(props: TFavoriteToggleProps){
     const userData = useUserData();
     
     useEffect(() => {
-       fetch(`http://localhost:3000/user/favorite/${userData.UUID}/has/${props.blogId}`, {
+       fetch(`https://web-io-p635.onrender.com/user/favorite/${userData.UUID}/has/${props.blogId}`, {
         }).then(result => result.json())
         .then(result => {
             if(result.status == 200){
@@ -37,7 +37,7 @@ export default function FavoriteToggle(props: TFavoriteToggleProps){
     }
 
     const add = async () => {
-        await fetch("http://localhost:3000/user/favorite/add/"+userData.UUID, {
+        await fetch("https://web-io-p635.onrender.com/user/favorite/add/"+userData.UUID, {
             method:"POST",
             headers:{
                 "Content-Type": "application/json"
@@ -57,7 +57,7 @@ export default function FavoriteToggle(props: TFavoriteToggleProps){
     }
 
     const remove = async () => {
-        await fetch("http://localhost:3000/user/favorite/remove/"+userData.UUID, {
+        await fetch("https://web-io-p635.onrender.com/user/favorite/remove/"+userData.UUID, {
             method:"POST",
             headers:{
                 "Content-Type": "application/json"

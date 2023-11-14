@@ -31,16 +31,16 @@ export default function BlogsDisplay(props: TBlogsDisplayProps){
 
         switch(props.Display){
             case DisplayType.All:
-                url = "http://localhost:3000/blog/getAll"
+                url = "https://web-io-p635.onrender.com/blog/getAll"
                 break;
             case DisplayType.FromUser:
-                url = "http://localhost:3000/blog/getAll"+props.UUID;
+                url = "https://web-io-p635.onrender.com/blog/getAll"+props.UUID;
                 break;
             case DisplayType.UserFavorites:
-                url = "http://localhost:3000/user/favorite/get/"+props.UUID;
+                url = "https://web-io-p635.onrender.com/user/favorite/get/"+props.UUID;
                 break;
             case DisplayType.FromKeyWords:
-                url = "http://localhost:3000/blog/getbytitle/"+props.Keywords;
+                url = "https://web-io-p635.onrender.com/blog/getbytitle/"+props.Keywords;
                 break;
         }
 

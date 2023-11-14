@@ -20,7 +20,7 @@ export default function ProfileDataDisplay(props: TProfileDataProps){
     useEffect(() => {
         console.log("use effect");
         
-        fetch("http://localHost:3000/user/get/"+props.UUID)
+        fetch("https://web-io-p635.onrender.com/user/get/"+props.UUID)
         .then(res => res.json())
         .then(response => {
             console.log(response)

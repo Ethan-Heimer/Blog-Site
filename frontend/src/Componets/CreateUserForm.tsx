@@ -16,7 +16,7 @@ export default function CreateUserForm(){
     const onSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
     
-        await fetch("http://localHost:3000/user/signup", {
+        await fetch("https://web-io-p635.onrender.com/user/signup", {
             method:"POST",
             headers:{
                 "Content-Type": "application/json"

@@ -21,13 +21,13 @@ export default function UserDisplay(props: TUserDisplayProps){
         switch(props.displayType)
         {
             case DisplayType.BySearch:
-                url = "http://localhost:3000/user/getbysearch/"+props.input
+                url = "https://web-io-p635.onrender.com/user/getbysearch/"+props.input
                 break;
             case DisplayType.ByFollowing:
-                url = "http://localhost:3000/user/following/get/"+props.input
+                url = "https://web-io-p635.onrender.com/user/following/get/"+props.input
                 break;
             case DisplayType.ByFollowers:
-                url = "http://localhost:3000/user/followers/get/"+props.input
+                url = "https://web-io-p635.onrender.com/user/followers/get/"+props.input
                 break;
         }
 

@@ -15,7 +15,7 @@ export default function CommentDisplay(props: TSDData){
         const fetchData = async () => {
             console.log("Socket");
     
-            await fetch("http://localhost:3000/blog/get/"+props.BlogId)
+            await fetch("https://web-io-p635.onrender.com/blog/get/"+props.BlogId)
                 .then(res => res.json())
                 .then(res => { 
                     if(res.status == 200){

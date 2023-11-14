@@ -19,7 +19,7 @@ export default function ProfileWidget(props: TProfileProps){
     const Nav = useNavigate()
     
     useEffect(() => {  
-        fetch("http://localHost:3000/user/get/"+props.UUID)
+        fetch("https://web-io-p635.onrender.com/user/get/"+props.UUID)
         .then(res => res.json())
         .then(response => { 
             if(response.statusCode == 200){

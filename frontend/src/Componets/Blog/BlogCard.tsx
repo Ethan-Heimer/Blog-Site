@@ -22,7 +22,7 @@ export default function BlogCard(props: TCardProps){
     }
 
     const Delete = async () => {
-        await fetch("http://localhost:3000/blog/delete/"+props.id, {method: "DELETE"});
+        await fetch("https://web-io-p635.onrender.com/blog/delete/"+props.id, {method: "DELETE"});
         Nav("/home")
     }
 

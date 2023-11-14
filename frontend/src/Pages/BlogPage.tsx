@@ -12,7 +12,7 @@ export default function BlogPage(){
 
     useEffect(() => {
         console.log("test");
-        fetch("http://localhost:3000/blog/get/"+params.id)
+        fetch("https://web-io-p635.onrender.com/blog/get/"+params.id)
         .then(res => res.json())
         .then(res => { 
             if(res.status == 200){

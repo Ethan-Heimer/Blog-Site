@@ -17,7 +17,7 @@ type TIOProviderProps = {
 
 export default function SocketIOProvider(props :TIOProviderProps){
     const socket = useMemo(() => {
-        return io.connect("http://localhost:3000");
+        return io.connect("https://web-io-p635.onrender.com");
     },[]);
     
     return(

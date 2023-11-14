@@ -19,7 +19,7 @@ export default function FollowButton(props: TFollowButtonProps){
         if(userData.UUID == '')
             return;
         
-        fetch(`http://localhost:3000/user/following/${userData.UUID}/is/${props.profileUUID}`, {
+        fetch(`https://web-io-p635.onrender.com/user/following/${userData.UUID}/is/${props.profileUUID}`, {
          }).then(result => result.json())
          .then(result => {
              if(result.status == 200){
